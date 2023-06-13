@@ -17,3 +17,7 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 > 2022.12.9
 > 
 >     感觉还有蛮多不合理的地方，但写完改完又忘了哪里不合理了 妈个鸡
+> 
+> 2023.6.14
+> 
+>     时隔多年再次革命性更新，新增token，新增路由守卫，配套后端还没更新，应该大概快了
