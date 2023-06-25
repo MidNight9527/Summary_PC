@@ -1,0 +1,71 @@
+.login_container {
+    background-image: url("https://www.woodymidnight.cn/upload/Summary/1ee1290d-d71b-672d-86be-297c4f2323a6/backgroundimg1.png");
+    background-size: 60% 100%;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-color: rgba(233, 239, 255, 1);
+    height: 100%;
+  }
+
+  .login_box {
+    width: 450px;
+    height: 300px;
+    background-color: rgba(233, 239, 255, 0);
+    border-radius: 3px;
+    position: absolute;
+    left: 62%;
+    top: 48%;
+    transform: translate(-50%, -50%);
+  }
+
+  .login{
+    text-align: center;
+    font-size:40px;
+    margin-top: 30px;
+    text-shadow:1px 2px;
+  }
+
+  .username{
+    width: 420px;
+    height: 45px;
+
+  }
+  .password{
+    width: 420px;
+    height: 45px;
+    margin-top: 15px;
+  }
+  .loginsy {
+    width: 620px;
+    height: 45px;
+  }
+  .loginbutton {
+    width: 270px;
+    height: 45px;
+    margin-top: 13px;
+  }
+
+  .login_in {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    margin-top: 330px;
+  }
+
+  .RegisterAndPassword{
+    display: flex;
+    margin-left: 30px;
+    margin-top: 15px;
+    color: grey;
+  }
+
+  .register{
+    width: 60px;
+  }
+
+  .forgetpassword{
+    width: 90px;
+    margin-left: 500px;
+  }
