@@ -23,7 +23,23 @@ export const constantRoutes = [
         path: 'index',
         name: '首页',
         component: () => import('../views/IndexView/IndexView')
-      }, {
+      },
+      {
+        path: 'CreateBriefing',
+        name: '创建简报',
+        component: () => import('../views/CreateBriefing/CreateBriefing')
+      },
+      {
+        path: 'BriefingDetails',
+        name: '简报详情',
+        component: () => import('../views/BriefingDetails/BriefingDetails')
+      },
+      {
+        path: 'SeeMore',
+        name: '全部文章',
+        component: () => import('../views/SeeMore/SeeMore')
+      },
+      {
         path: 'mine',
         name: '我的',
         component: () => import('../views/MineView/MineView')

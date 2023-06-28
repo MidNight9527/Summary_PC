@@ -1,0 +1,82 @@
+.background{
+	width: 100%;
+}
+
+.img{
+	width: 100%;
+	margin-top: -10px;
+}
+
+.glide{
+	margin-left: 41%;
+	margin-top: 1%;
+	font-size:19px;
+	font-weight:blod
+}
+.downward{
+	width: 30px;
+	margin-top: 1.3%;
+	margin-left: 47%;
+}
+
+.LeftInput{
+  margin-top: 45px;
+  margin-left: 240px;
+}
+.yuanwen{
+  font-weight:bold;
+  width: 50px;
+  height: 25px;
+	line-height: 25px;
+  text-align:center;
+  font-family: 楷体;
+  border-radius: 5px;
+  background-color: rgb(246, 246, 193);
+  margin: 0,auto;
+}
+.ChoiceConversion{
+  width: 200px;
+  height: 300px;
+  margin-top: 190px;
+  margin-left: 100px;
+}
+.conversion{
+  width: 50px;
+  margin-top: 30px;
+  margin-left: 70px;
+}
+.zhaiyao{
+  font-weight:bold;
+  width: 70px;
+  height: 25px;
+	line-height: 25px;
+  text-align:center;
+  font-family: 楷体;
+  border-radius: 5px;
+  background-color: rgb(246, 246, 193);
+  margin: 0,auto;
+}
+.reightInput{
+  margin-top: 45px;
+  margin-left: 200px;
+}
+.Historysy{
+    position: absolute;
+    font-family: 楷体;
+    margin-left: 200px;
+    font-size:20px;
+    margin-top: 30px;
+}
+.BigFlex{
+	margin-top: -8%;
+	margin-left: 7%;
+	display: flex;
+	/* background-color: aliceblue; */
+	height: 500px;
+}
+.Warningmessage{
+	margin-left: 37%;
+	margin-top: 1%;
+	font-size:8px;
+	color: #f8b8b8;
+}

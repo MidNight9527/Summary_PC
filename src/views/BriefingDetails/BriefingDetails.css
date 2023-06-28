@@ -1,0 +1,32 @@
+
+.reply-comment {
+  margin: 10px 0 0 0;
+}
+.reply-comment input {
+  height: 40px;
+  border-radius: 5px;
+  outline: none;
+  width: 70%;
+  font-size: 18px;
+  padding: 0 20px;
+  /* border: 2px solid #f8f8f8; */
+  border: 2px solid skyblue;
+}
+/* 发布评论按钮 */
+.reply-comment button {
+  width: 15%;
+  height: 43px;
+  border: 0;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  background-color: rgb(118, 211, 248);
+  cursor: pointer;
+  letter-spacing: 2px;
+  margin-left: 20px;
+}
+/* 鼠标经过字体加粗 */
+.reply-comment button:hover {
+  font-weight: 600;
+}

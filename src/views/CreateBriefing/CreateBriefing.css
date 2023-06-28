@@ -1,0 +1,205 @@
+.FormModule{
+  /* border: 1px solid red; */
+  border-radius:5px;
+  width: 95vw;
+  margin: 0 auto;
+  background-color: #ffffff;
+  height: 88vh;
+}
+.PageTitle{
+  /* border:1px solid red ; */
+  padding: 20px 10px 10px 25px;
+  font-size: 20px;
+  letter-spacing: 4px;
+}
+/* 状态条 */
+.StatusBarBox{
+  /* border: 1px solid red; */
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 25px;
+}
+
+/* 步骤一 */
+.stepsOneBox{
+  /* border: 1px solid red; */
+  width: 60vw;
+  height: 58%;
+  margin: 0 auto;
+  /* margin-top: 10px; */
+}
+
+/* 第一行 */
+.stepsOne_lineBox{
+  display: flex;
+  justify-content:space-between;
+  margin-top: 25px;
+  /* border: 1px solid red; */
+}
+
+/* 左部分 */
+.stepsOne_line_leftBox{
+  border: 1px solid rgba(128, 128, 128, 0.466);
+  width: 25%;
+  height: 175px;
+  border-radius: 5px;
+}
+
+/* 右部分 */
+.stepsOne_line_rightBox{
+  border: 1px solid rgba(128, 128, 128, 0.466);
+  width: 25%;
+  height: 175px;
+border-radius: 5px;
+}
+
+/* 模块样式 */
+/* 第一行 */
+.stepsOne_line_Box_title{
+  /* border: 1px solid red; */
+  padding: 15px 10px 10px 15px;
+  letter-spacing: 4px;
+  font-weight: 600;
+  font-size: 20px;
+}
+/* 第二行 参数内容 */
+.stepsOne_line_Box_contentBox{
+  /* border: 1px solid red; */
+  width: 86%;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+/* 第二行参数内容 第一行 */
+.stepsOne_line_Box_content_firstLine{
+    /* border: 1px solid red; */
+    display: flex;
+    padding: 0px 10px 10px 0;
+}
+.stepsOne_line_Box_content_firstLine_Oneitem{
+  letter-spacing: 4px;
+}
+.stepsOne_line_Box_content_firstLine_Twoitem{
+  margin-left: 70px;
+  letter-spacing: 4px;
+}
+/* 第二行参数内容 第二行 */
+.stepsOne_line_Box_content_SecondLine{
+  padding: 10px 10px 10px 0;
+}
+.stepsOne_line_Box_content_SecondLine_item{
+  letter-spacing: 4px;
+}
+
+/* 按钮 */
+.stepsOne_line_Box_button{
+    /* border: 1px solid red; */
+    text-align: end;
+    margin-right: 5px;
+}
+
+
+/* 第二行 */
+.stepsTwo_lineBox{
+  display: flex;
+  justify-content:space-between;
+  margin-top: 35px;
+}
+
+/* 按钮集合 */
+.buttonBox{
+  /* border: 1px solid red; */
+  margin-top: 25px;
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+/* 步骤二 */
+.stepsTwoBox{
+    border: 1px solid #ffffff;
+    width: 60vw;
+    height: 58%;
+    margin: 0 auto;
+    /* margin-top: 10px; */
+}
+
+/* 步骤二 第一行 */
+.stepsTwo_oneLineBox{
+  display: flex;
+  /* border: 1px solid red; */
+  width: 75%;
+  margin: 0 auto;
+  margin-top: 80px;
+}
+
+/* 步骤二 第二行 */
+.stepsTwo_twoLineBox{
+  display: flex;
+  /* border: 1px solid red; */
+  width: 75%;
+  margin: 0 auto;
+  margin-top: 70px;
+}
+.stepsTwo_lineTitle{
+    margin-top: 8px;
+    margin-left: 20px;
+}
+.stepsTwo_linePicker{
+  width: 70%;
+  margin-left: 20px;
+}
+
+
+/* 步骤三 */
+.stepsThreeBox{
+  border: 1px solid #ffffff;
+  width: 60vw;
+  height: 58%;
+  margin: 0 auto;
+  /* margin-top: 10px; */
+}
+/* 多行文输入框 */
+.textinput{
+  height: 300px;
+  margin-top: 30px;
+  /* border: 1px solid red; */
+}
+/* 文件上传按钮 */
+.uploadButton{
+  margin-top: 30px;
+}
+
+
+/* 步骤四 */
+.stepsFoureBox{
+  border: 1px solid #ffffff;
+  width: 60vw;
+  height: 58%;
+  margin: 0 auto;
+  /* margin-top: 10px; */
+}
+.stepsFoureContentBox{
+  /* border: 1px solid red; */
+  margin-top: 120px;
+  text-align: center;
+}
+/* 图片 */
+.stepsFoureImage{
+  width: 80px;
+  height: 80px;
+}
+/* 提示内容 */
+.stepsFoureContentsBox{
+    /* border: 1px solid red; */
+    margin-top: 10px;
+}
+.stepsFoureContent_one{
+  font-size: 22px;
+  letter-spacing: 4px;
+}
+.stepsFoureContent_two{
+  font-size: 18px;
+  letter-spacing: 6px;
+  margin-top: 8px;
+}

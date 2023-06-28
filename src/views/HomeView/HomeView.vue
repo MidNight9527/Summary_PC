@@ -18,6 +18,10 @@
             index="index"
             route="/index"
           >首页</el-menu-item>
+          <el-menu-item
+            index="CreateBriefing"
+            route="/CreateBriefing"
+          >创建简报</el-menu-item>
           <el-submenu
             :style="{float: 'right'}"
             index="2-4"
@@ -33,6 +37,10 @@
               index="mine"
               route="/mine"
             >我的</el-menu-item>
+            <el-menu-item
+              index="SeeMore"
+              route="/SeeMore"
+            >文章论坛</el-menu-item>
             <el-menu-item
               index="logout"
               route="#"
@@ -55,7 +63,7 @@ export default {
   data() {
     return {
       activeIndex: this.$store.getters.activeIndex,
-      userAvatar: this.$store.getters.avatar
+      userAvatar: this.$store.getters.userInfo.useravatar
     }
   },
   // beforeUpdate() {

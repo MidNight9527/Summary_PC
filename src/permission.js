@@ -2,7 +2,7 @@ import router from './router'
 import { getToken } from './utils/auth'
 import store from './store'
 
-const blackList = []
+const blackList = ['/CreateBriefing', '/mine', '/SeeMore', '/BriefingDetails']
 
 router.beforeEach(async(to, from, next) => {
   // console.log('to', to)

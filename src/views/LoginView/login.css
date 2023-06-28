@@ -21,10 +21,12 @@
   .login{
     text-align: center;
     font-size:40px;
-    margin-top: 30px;
+    margin-top: 28px;
     text-shadow:1px 2px;
   }
-
+  .inputusernameandpassword{
+    margin-top: 100px;
+  }
   .username{
     width: 420px;
     height: 45px;
@@ -33,7 +35,7 @@
   .password{
     width: 420px;
     height: 45px;
-    margin-top: 15px;
+    margin-top: 20px;
   }
   .loginsy {
     width: 620px;
@@ -51,13 +53,13 @@
     width: 100%;
     padding: 0 20px;
     box-sizing: border-box;
-    margin-top: 330px;
+    /* margin-top: 500px; */
   }
 
   .RegisterAndPassword{
     display: flex;
     margin-left: 30px;
-    margin-top: 15px;
+    margin-top: 1px;
     color: grey;
   }
 

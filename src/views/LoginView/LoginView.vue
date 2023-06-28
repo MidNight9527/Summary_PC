@@ -6,7 +6,7 @@
         label-width="80px"
         class="login_in"
       >
-        <div class="input">
+        <div class="inputusernameandpassword">
           <el-input
             v-model="loginForm.username"
             placeholder="请输入用户名"
@@ -31,6 +31,7 @@
           <el-button
             type="text"
             style="margin-left: 230px;"
+            @click="forgotmypassword"
           >忘记密码</el-button>
         </div>
         <el-form-item class="loginsy">
@@ -45,7 +46,57 @@
 
     <div>
       <el-dialog
-        v-model="dialogFormVisible"
+        :visible.sync="dialogFormpasswordVisible"
+        :title="passworddialogTitle"
+        @close="cancel"
+      >
+        <el-form
+          ref="forgot"
+          :model="forgot"
+          label-width="auto"
+          required
+        >
+
+          <el-form-item
+            label="用户名"
+            prop="forgotusername"
+          >
+            <el-input
+              v-model="forgot.forgotusername"
+              autocomplete="off"
+              placeholder="请输入用户名"
+            />
+          </el-form-item>
+
+          <el-form-item
+            label="手机号"
+            prop="forgotuserphone"
+          >
+            <el-input
+              v-model="forgot.forgotuserphone"
+              autocomplete="off"
+              placeholder="请输入手机号"
+            />
+          </el-form-item>
+        </el-form>
+        <div
+          slot="footer"
+          style="margin-left: 70%;"
+        >
+          <el-button
+            @click="cancel"
+          >取消</el-button>
+          <el-button
+            type="primary"
+            @click="forgotpassword"
+          >找回密码</el-button>
+        </div>
+      </el-dialog>
+    </div>
+
+    <div>
+      <el-dialog
+        :visible.sync="dialogFormVisible"
         :title="dialogTitle"
         @close="cancel"
       >
@@ -125,7 +176,7 @@
         </el-form>
         <div
           slot="footer"
-          style="margin-left: 80%;"
+          style="margin-left: 60%;"
         >
           <el-button
             @click="cancel"
@@ -143,7 +194,7 @@
 
 <script>
 import './login.css'
-import { register } from '../../api/register.js'
+import { register, forgotpassword } from '../../api/register.js'
 export default {
   data() {
     return {
@@ -160,8 +211,14 @@ export default {
         registerusersign: '', // 注册的个性签名
         registeruseravatar: '' // 注册的照片
       },
+      forgot: {
+        forgotusername: '',
+        forgotuserphone: ''
+      },
       dialogTitle: '', // 气泡框标题
-      dialogFormVisible: false // 气泡框显示状态
+      dialogFormVisible: false, // 气泡框显示状态
+      dialogFormpasswordVisible: false,
+      passworddialogTitle: ''
     }
   },
   created() {
@@ -178,6 +235,7 @@ export default {
       } else {
         this.$store.dispatch('user/login',
           { userName: this.loginForm.username, password: this.loginForm.password }).then(res => {
+          console.log('syres')
           this.$router.push({ path: this.redirect || '/index' })
           this.loginForm.username = ''
           this.loginForm.password = ''
@@ -203,9 +261,17 @@ export default {
       this.formObj.registerusersign = ''
       console.log('ddddd', this.dialogFormVisible)
     },
+    // 找回密码
+    forgotmypassword() {
+      this.dialogFormpasswordVisible = true
+      this.passworddialogTitle = '找回密码'
+      this.forgot.forgotusername = ''
+      this.forgot.forgotuserphone = ''
+    },
     // 关闭气泡框
     cancel() {
       this.dialogFormVisible = false
+      this.dialogFormpasswordVisible = false
       this.formObj.registerpassword = ''
       this.formObj.registeruseravatar = ''
       this.formObj.registerusername = ''
@@ -255,6 +321,7 @@ export default {
               this.formObj.registerusername = ''
               this.formObj.registeruserphone = ''
               this.formObj.registerusersign = ''
+              this.dialogFormpasswordVisible = false
               this.$notify.error({
                 title: '错误',
                 message: '注册失败'
@@ -263,6 +330,34 @@ export default {
           })
         }
       }
+    },
+
+    // 找回密码
+    forgotpassword() {
+      forgotpassword(this.forgot.forgotuserphone, this.forgot.forgotusername).then((res) => {
+        console.log('密码找回', res)
+        if (res.httpCode === 200) {
+          this.dialogFormpasswordVisible = false
+          this.forgot.forgotusername = ''
+          this.forgot.forgotuserphone = ''
+          this.$alert(res.data.password, '你的密码', {
+            confirmButtonText: '确定'
+            // callback: action => {
+            //   this.$message({
+            //     type: 'info',
+            //     message: `action: ${action}`
+            //   })
+            // }
+          })
+        } else {
+          this.forgot.forgotusername = ''
+          this.forgot.forgotuserphone = ''
+          this.$notify.error({
+            title: '错误',
+            message: '找回失败'
+          })
+        }
+      })
     }
   }
 }
