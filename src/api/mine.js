@@ -67,7 +67,40 @@ export function listuserhistory(userid) {
     }
   })
 }
+// 点赞前n
+export function hotspotN() {
+  console.log('踩踩我是谁')
+  return request({
+    url: '/like/selectTop',
+    method: 'post',
+    params: {
+      n: 3
+    }
+  })
+}
 
+// 评论前n
+export function hotspotNN() {
+  console.log('踩踩我是谁')
+  return request({
+    url: '/comment/selectTop',
+    method: 'post',
+    params: {
+      n: 3
+    }
+  })
+}
+// 收藏前n
+export function hotspotNNN() {
+  console.log('踩踩我是谁')
+  return request({
+    url: '/collect/selectTop',
+    method: 'post',
+    params: {
+      n: 3
+    }
+  })
+}
 // export function collecthistory(collectid) {
 //   return request({
 //     url: '/history/selectByAll',

@@ -75,7 +75,7 @@
           <div
             v-if="listlikehistorysy.length !== 0"
             style="margin-left: 75%; color: #e67979;"
-            @click="golistlikehistoryone"
+            @click="goone"
           >查看简文</div>
         </div>
         <div
@@ -108,7 +108,7 @@
           <div
             v-if="listcollecthistory.length !== 0"
             style="margin-left: 75%; color: #e67979;"
-            @click="Detail"
+            @click="gotwo"
           >查看简文</div>
         </div>
         <div
@@ -139,8 +139,9 @@
           </p>
           <p v-else>暂无数据，快快去添加把！！！</p>
           <div
+            v-if="listuser.length !== 0"
             style="margin-left: 75%; color: #e67979;"
-            @click="Detail"
+            @click="gothree"
           >查看简文</div>
         </div>
         <div
@@ -173,7 +174,7 @@
           <div
             v-if="listlikehistorysy.length>1"
             style="margin-left: 75%; color: #e67979;"
-            @click="Detail"
+            @click="gofour"
           >查看简文</div>
         </div>
         <div
@@ -204,9 +205,9 @@
           </p>
           <p v-else>暂无数据，快快去添加把！！！</p>
           <div
-            v-if="listcollecthistory.length<1"
+            v-if="listcollecthistory.length>1"
             style="margin-left: 75%; color: #e67979;"
-            @click="Detail"
+            @click="gofive"
           >查看简文</div>
         </div>
         <div
@@ -239,7 +240,7 @@
           <div
             v-if="listuser.length>1"
             style="margin-left: 75%; color: #e67979;"
-            @click="Detail"
+            @click="gosix"
           >查看简文</div>
         </div>
       </div>
@@ -269,7 +270,7 @@
             <div
               v-if="listuserhistorywdy.length !== 0"
               style="margin-top: 3%; margin-left: 80%; color: #e67979;"
-              @click="ViewOriginalText"
+              @click="MyBriefingDetails"
             >查看简文</div>
           </div>
         </div>
@@ -393,14 +394,88 @@
     <div
       style="
         width: 30%;
-        height: 600px;
+        height: 500px;
         margin-left: 68%;
         background-color: white;
         border-radius: 20px ;
       "
     >
-      <div style="margin-left: 4%; margin-top: 3%; border-radius: 20px ;float: left">
-        <h3>实时热点</h3>
+      <div style="margin-left: 4%; margin-top: 3%; border-radius: 20px ; float: left">
+        <div>
+          <p style="width: 200px; font-size: 20px;">实时热点</p>
+        </div>
+        <p
+          style="width: 400px; overflow: hidden; color: rgb(245, 73, 73);
+                      text-overflow: ellipsis;
+                      margin-top: 4px;
+                      display: -webkit-box;
+                      -webkit-box-orient: vertical;
+                      -webkit-line-clamp: 1; /* 超出几行省略 */"
+        >1.{{ hotspotlist[0].history.summarytext }}</p>
+        <p
+          style="width: 400px;; overflow: hidden;  color: rgb(245, 73, 73);
+                      text-overflow: ellipsis;
+                      margin-top: 4px;
+                      display: -webkit-box;
+                      -webkit-box-orient: vertical;
+                      -webkit-line-clamp: 1; /* 超出几行省略 */"
+        >2.{{ hotspotlist[1].history.summarytext }}</p>
+        <p
+          style="width: 400px;; overflow: hidden;  color: rgb(245, 73, 73);
+                      text-overflow: ellipsis;
+                      margin-top: 4px;
+                      display: -webkit-box;
+                      -webkit-box-orient: vertical;
+                      -webkit-line-clamp: 1; /* 超出几行省略 */"
+        >3.{{ listlikehistory[1].summarytext }}</p>
+        <p
+          style="width: 400px;; overflow: hidden;
+                      text-overflow: ellipsis;
+                      margin-top: 4px;
+                      display: -webkit-box;
+                      -webkit-box-orient: vertical;
+                      -webkit-line-clamp: 1; /* 超出几行省略 */"
+        >4.{{ listlikehistory[2].summarytext }}</p>
+        <p
+          style="width: 400px;; overflow: hidden;
+                      text-overflow: ellipsis;
+                      margin-top: 4px;
+                      display: -webkit-box;
+                      -webkit-box-orient: vertical;
+                      -webkit-line-clamp: 1; /* 超出几行省略 */"
+        >5.{{ listlikehistory[1].summarytext }}</p>
+        <p
+          style="width: 400px;; overflow: hidden;
+                      text-overflow: ellipsis;
+                      margin-top: 4px;
+                      display: -webkit-box;
+                      -webkit-box-orient: vertical;
+                      -webkit-line-clamp: 1; /* 超出几行省略 */"
+        >6.{{ listlikehistory[1].summarytext }}</p>
+        <p
+          style="width: 400px;; overflow: hidden;
+                      text-overflow: ellipsis;
+                      margin-top: 4px;
+                      display: -webkit-box;
+                      -webkit-box-orient: vertical;
+                      -webkit-line-clamp: 1; /* 超出几行省略 */"
+        >7.{{ listlikehistory[1].summarytext }}</p>
+        <p
+          style="width: 400px;; overflow: hidden;
+                      text-overflow: ellipsis;
+                      margin-top: 4px;
+                      display: -webkit-box;
+                      -webkit-box-orient: vertical;
+                      -webkit-line-clamp: 1; /* 超出几行省略 */"
+        >8.{{ listlikehistory[1].summarytext }}</p>
+        <p
+          style="width: 400px;; overflow: hidden;
+                      text-overflow: ellipsis;
+                      margin-top: 4px;
+                      display: -webkit-box;
+                      -webkit-box-orient: vertical;
+                      -webkit-line-clamp: 1; /* 超出几行省略 */"
+        >9.{{ listlikehistory[1].summarytext }}</p>
       </div>
     </div>
     <div>
@@ -463,10 +538,10 @@
             label="手机号"
             prop="updateuserphone"
           >
-            <el-inputuserlist
+            <el-input
               v-model="formObj.updateuserphone"
               autocomplete="off"
-              :value="userlist.userphone"
+              value="userlist.userphone"
             />
           </el-form-item>
 
@@ -497,11 +572,12 @@
 </template>
 
 <script>
-import { userinfo, comment, like, collect, update, listlikehistory, listuserhistory } from '../../api/mine.js'
+import { userinfo, comment, like, collect, update, listlikehistory, listuserhistory, hotspotN, hotspotNN, hotspotNNN } from '../../api/mine.js'
 export default {
   name: 'MineView',
   data() {
     return {
+      hotspotlist: [],
       valueUrl: 'https://www.woodymidnight.cn/Summary/document/uploadFile',
       url: this.avatar, // 没有照片时候
       name: this.$store.getters.name,
@@ -547,10 +623,38 @@ export default {
       this.likes()
       this.collects()
       this.historyuseridlist()
+      this.hotspot()
     })
   },
 
   methods: {
+    hotspot() {
+      hotspotN().then((res) => {
+        console.log('syqq', res.data)
+        this.hotspotlist = res.data
+      })
+      this.hotspottwo()
+    },
+    sysysy() {
+      console.log('sysysy', this.hotspotlist)
+    },
+    hotspottwo() {
+      hotspotNN().then((res) => {
+        for (var i = 0; i < res.data.length; i++) {
+          this.hotspotlist.push(res.data[i])
+        }
+      })
+      this.hotspotthree()
+    },
+    hotspotthree() {
+      hotspotNNN().then((res) => {
+        for (var i = 0; i < res.data.length; i++) {
+          this.hotspotlist.push(res.data[i])
+        }
+      })
+      console.log('hotspotNNN', this.hotspotlist)
+    },
+
     Detail() {
       this.$router.push({ path: this.redirect || '/BriefingDetails' })
     },
@@ -628,12 +732,28 @@ export default {
       console.log(this.listhistory)
     },
     // 查看原文的跳转
-    ViewOriginalText() {
+    MyBriefingDetails() {
       this.$router.push({ path: '/BriefingDetails', query: { historyid: this.listlikehistory[0].historyid }})
     },
-    // 查看点赞的跳转
-    golistlikehistoryone() {
-      this.$router.push({ path: '/BriefingDetails', query: { historyid: this.listlikehistory[0].historyid }})
+
+    // 查看6个
+    goone() {
+      this.$router.push({ path: '/BriefingDetails', query: { historyid: this.listlikehistorysy[0].historyid }})
+    },
+    gotwo() {
+      this.$router.push({ path: '/BriefingDetails', query: { historyid: this.listcollecthistory[0].historyid }})
+    },
+    gothree() {
+      this.$router.push({ path: '/BriefingDetails', query: { historyid: this.listuser[0].historyid }})
+    },
+    gofour() {
+      this.$router.push({ path: '/BriefingDetails', query: { historyid: this.listlikehistorysy[1].historyid }})
+    },
+    gofive() {
+      this.$router.push({ path: '/BriefingDetails', query: { historyid: this.listcollecthistory[1].historyid }})
+    },
+    gosix() {
+      this.$router.push({ path: '/BriefingDetails', query: { historyid: this.listuser[1].historyid }})
     },
     // 查看所以历史记录的跳转
     SeeMore() {

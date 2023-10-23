@@ -73,7 +73,7 @@
       </div>
     </div>
     <div
-      v-if="this.username === undefined"
+      v-if="username === undefined"
       class="Warningmessage"
     >
       欢迎你的使用，如果想使用更多其他功能，请先登录！！！

@@ -10,7 +10,7 @@ const name = 'Summary_PC'
 
 module.exports = {
   publicPath: './',
-  outputDir: 'buildName',
+  outputDir: 'SummaryPC',
   assetsDir: 'static',
   productionSourceMap: false,
   devServer: {

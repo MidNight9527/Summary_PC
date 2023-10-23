@@ -20,45 +20,71 @@ export function userinfo(userid) {
   })
 }
 
-export function like(userid) {
+export function like(historyid, userid) {
   return request({
     url: '/like/selectByAll',
     method: 'post',
     data: {
+      historyid: historyid,
       userid: userid
     }
   })
 }
 
-export function likehistory(likeid) {
+export function likedelete(likeid) {
+  console.log('wdy', likeid)
   return request({
-    url: '/history/selectByAll',
+    url: '/like/delete',
     method: 'post',
-    data: {
-      likeid: likeid
+    params: {
+      id: likeid
     }
   })
 }
 
-export function collect(userid) {
+export function likeinsert(historyid, userid) {
+  return request({
+    url: '/like/insert',
+    method: 'post',
+    data: {
+      historyid: historyid,
+      userid: userid
+    }
+  })
+}
+
+export function collectdelete(collectid) {
+  return request({
+    url: '/collect/delete',
+    method: 'post',
+    params: {
+      id: collectid
+    }
+  })
+}
+
+export function collectinsert(historyid, userid) {
+  return request({
+    url: '/collect/insert',
+    method: 'post',
+    data: {
+      historyid: historyid,
+      userid: userid
+    }
+  })
+}
+
+export function collect(historyid, userid) {
   return request({
     url: '/collect/selectByAll',
     method: 'post',
     data: {
+      historyid: historyid,
       userid: userid
     }
   })
 }
 
-export function collecthistory(collectid) {
-  return request({
-    url: '/history/selectByAll',
-    method: 'post',
-    data: {
-      collectid: collectid
-    }
-  })
-}
 export function userhistory(userId) {
   return request({
     url: '/history/selectAllByUserId',
@@ -96,6 +122,18 @@ export function insert(insertcommenttext, inserthistoryid, insertuserid) {
       commenttext: insertcommenttext,
       historyid: inserthistoryid,
       userid: insertuserid
+    }
+  })
+}
+
+export function getDownLoadUrl(historyId, templateId) {
+  console.log('我的下载', historyId, templateId)
+  return request({
+    url: '/history/getDownLoadUrl',
+    method: 'post',
+    params: {
+      historyId: historyId,
+      templateId: templateId
     }
   })
 }

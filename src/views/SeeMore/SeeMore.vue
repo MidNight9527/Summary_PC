@@ -88,7 +88,6 @@ export default {
   },
 
   methods: {
-
     update(historyid) {
       this.$router.push({ path: '/BriefingDetails', query: { historyid: historyid }})
     },
