@@ -31,19 +31,6 @@
           </div>
         </div>
         <div class="ChoiceConversion">
-          <!-- 转换和选择器 -->
-          <!-- <el-select
-            v-model="value"
-            placeholder="请选择"
-          >
-            <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-              style="font-family: 楷体;"
-            />
-          </el-select> -->
           <img
             src="../../icons/conversion.png"
             class="conversion"
@@ -73,7 +60,7 @@
       </div>
     </div>
     <div
-      v-if="this.username === undefined"
+      v-if="username === undefined"
       class="Warningmessage"
     >
       欢迎你的使用，如果想使用更多其他功能，请先登录！！！

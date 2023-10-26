@@ -42,106 +42,55 @@
         <div class="stepsOne_lineBox">
           <!-- 左部分 -->
           <div class="stepsOne_line_leftBox">
-            <!-- 第一行 -->
-            <div class="stepsOne_line_Box_title">模板</div>
-            <!-- 第二行 参数内容 -->
-            <div class="stepsOne_line_Box_contentBox">
-              <!-- 第二行参数内容 第一行 -->
-              <div class="stepsOne_line_Box_content_firstLine">
-                <div class="stepsOne_line_Box_content_firstLine_Oneitem">参数</div>
-                <div class="stepsOne_line_Box_content_firstLine_Twoitem">参数</div>
-              </div>
-              <!-- 第二行参数内容 第二行 -->
-              <div class="stepsOne_line_Box_content_SecondLine">
-                <div class="stepsOne_line_Box_content_SecondLine_item">参数</div>
-              </div>
-            </div>
-            <!-- 按钮 -->
-            <div class="stepsOne_line_Box_button">
-              <el-button
-                type="primary"
-                class="stepsOne_line_Box_button"
-                size="mini"
-              >选择</el-button>
-            </div>
+            <div
+              v-if="select === 1"
+              style="margin-left: 90px;"
+            >选这个！</div>
+            <img
+              src="../../icons/one.png"
+              style="width: 250px;margin-top: 8px; "
+              @click="one"
+            >
           </div>
           <!-- 右部分 -->
           <div class="stepsOne_line_rightBox">
-            <!-- 第一行 -->
-            <div class="stepsOne_line_Box_title">模板</div>
-            <!-- 第二行 参数内容 -->
-            <div class="stepsOne_line_Box_contentBox">
-              <!-- 第二行参数内容 第一行 -->
-              <div class="stepsOne_line_Box_content_firstLine">
-                <div class="stepsOne_line_Box_content_firstLine_Oneitem">参数</div>
-                <div class="stepsOne_line_Box_content_firstLine_Twoitem">参数</div>
-              </div>
-              <!-- 第二行参数内容 第二行 -->
-              <div class="stepsOne_line_Box_content_SecondLine">
-                <div class="stepsOne_line_Box_content_SecondLine_item">参数</div>
-              </div>
-            </div>
-            <!-- 按钮 -->
-            <div class="stepsOne_line_Box_button">
-              <el-button
-                type="primary"
-                class="stepsOne_line_Box_button"
-                size="mini"
-              >选择</el-button>
-            </div>
+            <div
+              v-if="select === 2"
+              style=" margin-left: 90px; "
+            >选这个！</div>
+            <img
+              src="../../icons/two.png"
+              style="width: 250px; margin-top: 8px;"
+              @click="two"
+            >
           </div>
         </div>
         <!-- 第二行 -->
         <div class="stepsTwo_lineBox">
           <!-- 左部分 -->
           <div class="stepsOne_line_leftBox">
-            <!-- 第一行 -->
-            <div class="stepsOne_line_Box_title">模板</div>
-            <!-- 第二行 参数内容 -->
-            <div class="stepsOne_line_Box_contentBox">
-              <!-- 第二行参数内容 第一行 -->
-              <div class="stepsOne_line_Box_content_firstLine">
-                <div class="stepsOne_line_Box_content_firstLine_Oneitem">参数</div>
-                <div class="stepsOne_line_Box_content_firstLine_Twoitem">参数</div>
-              </div>
-              <!-- 第二行参数内容 第二行 -->
-              <div class="stepsOne_line_Box_content_SecondLine">
-                <div class="stepsOne_line_Box_content_SecondLine_item">参数</div>
-              </div>
-            </div>
-            <!-- 按钮 -->
-            <div class="stepsOne_line_Box_button">
-              <el-button
-                type="primary"
-                class="stepsOne_line_Box_button"
-                size="mini"
-              >选择</el-button>
-            </div>
+            <div
+              v-if="select === 3"
+              style="margin-left: 90px;"
+            >选这个！</div>
+            <img
+              src="../../icons/three.png"
+              style="width: 250px; margin-top: 8px;"
+              @click="three"
+            >
           </div>
           <!-- 右部分 -->
           <div class="stepsOne_line_rightBox">
+            <div
+              v-if="select === 4"
+              style="margin-left: 90px;"
+            >选这个！</div>
             <!-- 第一行 -->
-            <div class="stepsOne_line_Box_title">模板</div>
-            <!-- 第二行 参数内容 -->
-            <div class="stepsOne_line_Box_contentBox">
-              <!-- 第二行参数内容 第一行 -->
-              <div class="stepsOne_line_Box_content_firstLine">
-                <div class="stepsOne_line_Box_content_firstLine_Oneitem">参数</div>
-                <div class="stepsOne_line_Box_content_firstLine_Twoitem">参数</div>
-              </div>
-              <!-- 第二行参数内容 第二行 -->
-              <div class="stepsOne_line_Box_content_SecondLine">
-                <div class="stepsOne_line_Box_content_SecondLine_item">参数</div>
-              </div>
-            </div>
-            <!-- 按钮 -->
-            <div class="stepsOne_line_Box_button">
-              <el-button
-                type="primary"
-                class="stepsOne_line_Box_button"
-                size="mini"
-              >选择</el-button>
-            </div>
+            <img
+              src="../../icons/four.png"
+              style="width: 250px; margin-top: 8px;"
+              @click="four"
+            >
           </div>
         </div>
       </div>
@@ -150,22 +99,6 @@
         v-if="active === 1"
         class="stepsTwoBox"
       >
-        <!-- 第一行 -->
-        <div class="stepsTwo_oneLineBox">
-          <div class="stepsTwo_lineTitle">模型选择</div>
-          <el-select
-            v-model="value"
-            class="stepsTwo_linePicker"
-            placeholder="请选择"
-          >
-            <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            />
-          </el-select>
-        </div>
         <!-- 第二行 -->
         <div class="stepsTwo_twoLineBox">
           <div class="stepsTwo_lineTitle">算法选择</div>
@@ -199,7 +132,7 @@
         <!-- 上传文件 -->
         <el-upload
           class="upload-demo"
-          action="https://www.woodymidnight.cn/Summary/document/uploadFile"
+          action="https://www.woodymidnight.cn/Summary/summary/getTextString"
           :on-preview="handlePreview"
           :on-remove="handleRemove"
           :before-remove="beforeRemove"
@@ -214,6 +147,26 @@
             type="primary"
           >文件上传更快捷</el-button>
         </el-upload>
+        <!-- <el-upload
+          action
+          :data="{'algorithmId': 'TextRank', 'inPercent': 0.1, 'userId': 23}"
+          style="position:absolute;width: 100%;height: 100%;z-index: 1000;"
+          :auto-upload="false"
+          @change="onselect"
+        >
+          <template #trigger><el-button
+            size="small"
+            type="primary"
+          >选择</el-button></template>
+          <el-button
+            v-if="!autoUpload"
+            style="margin-left: 1px;"
+            size="small"
+            type="success"
+            @click="onupload"
+          >上传</el-button>
+        </el-upload> -->
+
       </div>
       <!-- 步骤四 -->
       <div
@@ -249,15 +202,17 @@
           v-if="active === 2"
           style="margin-top: 12px;"
           type="primary"
-          @click="next"
+          @click="listnext"
         >提交</el-button>
         <el-button
           v-if="active === 3"
           style="margin-top: 12px;"
+          @click="xizaimoban"
         >查看简报</el-button>
         <el-button
           v-if="active === 3"
           style="margin-top: 12px;"
+          @click="goindex"
         >返回</el-button>
       </div>
     </div>
@@ -265,46 +220,99 @@
 </template>
 
 <script>
+import { list, getDownLoadUrl } from '../../api/CreateBriefing.js'
 import '../CreateBriefing/CreateBriefing.css'
+import MUpload from '@/components/MUpload/MUpload.vue'
 export default {
   name: 'SummaryPCGuidePage',
-
+  comments: {
+    MUpload
+  },
   data() {
     return {
+      url: '',
+      historyid: '',
+      inPercent: 0.1, // inPercent
+      userid: '', // userId
+      select: 0,
       active: 0,
       options: [{
-        value: '选项1',
-        label: '黄金糕'
+        value: 'BART',
+        label: 'BART'
       }, {
-        value: '选项2',
-        label: '双皮奶'
+        value: 'ROBERTa',
+        label: 'ROBERTa'
       }, {
-        value: '选项3',
-        label: '蚵仔煎'
+        value: 'Seq2Seq',
+        label: 'Seq2Seq'
       }, {
-        value: '选项4',
-        label: '龙须面'
-      }, {
-        value: '选项5',
-        label: '北京烤鸭'
+        value: 'TextRank',
+        label: 'TextRank'
       }],
-      value: '',
+      value: '', // algorithmId
       textarea1: '',
       fileList: []
     }
+  },
+  created() {
+    this.userid = this.$store.getters.userInfo.userid
   },
 
   mounted() {
 
   },
-
   methods: {
+    onselect() {
+      console.log(arguments)
+    },
+    autoUpload() {
+      console.log('aaaaaaaaaaaaaaaaaaaaaaa')
+      console.log(arguments)
+    },
+    goindex() {
+      this.$router.push({ path: this.redirect || '/index' })
+    },
+    one() {
+      this.select = 1
+    },
+    two() {
+      this.select = 2
+    },
+    three() {
+      this.select = 3
+    },
+    four() {
+      this.select = 4
+    },
     prev() {
       --this.active
       if (this.active < 0) this.active = 0
     },
     next() {
       if (this.active++ > 2) this.active = 0
+    },
+    listnext() {
+      if (this.active++ > 2) this.active = 0
+      list(this.value, this.textarea1, this.inPercent, this.userid).then((res) => {
+        this.historyid = res.data.history.historyid
+        console.log('我的', res)
+        this.shuchu()
+      })
+    },
+    shuchu() {
+      getDownLoadUrl(this.historyid, this.select).then((res) => {
+        this.url = res.data
+        console.log('我的文档链接', res)
+      })
+    },
+    xizaimoban() {
+      console.log('我进来了')
+      const iframe = document.createElement('iframe')
+      iframe.style.display = 'none'
+      iframe.style.height = 0
+      iframe.src = this.url
+      document.body.appendChild(iframe)
+      setTimeout(() => { iframe.remove() }, 5 * 60 * 1000)
     },
     // 文件删除后 事件
     handleRemove(file, fileList) {
@@ -323,8 +331,10 @@ export default {
       return this.$confirm(`确定移除 ${file.name}？`)
     },
     // 文件上传成功 事件
-    success(response, file, fileList) {
-      console.log('文件上传成功', file.response.data.fileUrl)
+    success(res, response, file, fileList) {
+      console.log('res', res)
+      this.textarea1 = res.data
+      // console.log('文件上传成功', file.response.data.fileUrl)
     }
   }
 }

@@ -8,15 +8,15 @@
 }
 
 .glide{
-	margin-left: 41%;
-	margin-top: 1%;
-	font-size:19px;
+	margin-left: 540px;
+	margin-top: 20px;
+	font-size:30px;
 	font-weight:blod
 }
 .downward{
 	width: 30px;
-	margin-top: 1.3%;
-	margin-left: 47%;
+	margin-top: 30px;
+	margin-left:680px;
 }
 
 .LeftInput{
@@ -68,15 +68,14 @@
     margin-top: 30px;
 }
 .BigFlex{
-	margin-top: -8%;
-	margin-left: 7%;
+	margin-top: 30px;
+	margin-left: 90px;
 	display: flex;
-	/* background-color: aliceblue; */
 	height: 500px;
 }
 .Warningmessage{
-	margin-left: 37%;
-	margin-top: 1%;
+	margin-left: 600px;
+	margin-top: 20px;
 	font-size:8px;
 	color: #f8b8b8;
 }

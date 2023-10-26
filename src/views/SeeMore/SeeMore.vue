@@ -31,7 +31,6 @@
           show-overflow-tooltip
           prop="summarytext"
           label="简化文章"
-          width="300"
         />
         <el-table-column
           label="操作"
@@ -88,7 +87,6 @@ export default {
   },
 
   methods: {
-
     update(historyid) {
       this.$router.push({ path: '/BriefingDetails', query: { historyid: historyid }})
     },

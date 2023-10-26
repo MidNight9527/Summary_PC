@@ -16,11 +16,11 @@
       <el-avatar
         :size="100"
         :src="userlist.useravatar"
-        style="margin-top: 0.8%;"
+        style="margin-top: 10px; margin-bottom: 10px;"
       />
       <h2>名字：{{ name }}</h2>
       <h2>个性签名：{{ userlist.usersign }}</h2>
-      <el-button @click="update">更改个人信息</el-button>
+      <el-button @click="updateData">更改个人信息</el-button>
     </div>
     <div style="margin-top: 2%; height: 600px">
       <div
@@ -39,7 +39,7 @@
             我的关注
             <el-button
               type="text"
-              style="margin-left: 82%; font-size: 5px"
+              style="margin-left: 80%; font-size: 15px"
               @click="SeeMore"
             >去论坛看看
             </el-button>
@@ -61,6 +61,7 @@
           <p
             v-if="listlikehistorysy.length !== 0"
             style="
+              padding: 0px 15px;
               word-break: break-all;
                       overflow: hidden;
                       text-overflow: ellipsis;
@@ -71,11 +72,11 @@
           >
             {{ listlikehistorysy[0].history.originaltext }}
           </p>
-          <p v-else>暂无数据，快快去添加把！！！</p>
+          <p v-else style="margin-left: 2%;">暂无数据，快快去添加吧！！！</p>
           <div
             v-if="listlikehistorysy.length !== 0"
             style="margin-left: 75%; color: #e67979;"
-            @click="golistlikehistoryone"
+            @click="goone"
           >查看简文</div>
         </div>
         <div
@@ -94,6 +95,7 @@
           <p
             v-if="listcollecthistory.length !== 0"
             style="
+               padding: 0px 15px;
               word-break: break-all;
                       overflow: hidden;
                       text-overflow: ellipsis;
@@ -104,11 +106,11 @@
           >
             {{ listcollecthistory[0].history.originaltext }}
           </p>
-          <p v-else>暂无数据，快快去添加把！！！</p>
+          <p v-else style="margin-left: 2%;">暂无数据，快快去添加吧！！！</p>
           <div
             v-if="listcollecthistory.length !== 0"
             style="margin-left: 75%; color: #e67979;"
-            @click="Detail"
+            @click="gotwo"
           >查看简文</div>
         </div>
         <div
@@ -127,6 +129,7 @@
           <p
             v-if="listuser.length !== 0"
             style="
+               padding: 0px 15px;
               word-break: break-all;
                       overflow: hidden;
                       text-overflow: ellipsis;
@@ -137,10 +140,11 @@
           >
             {{ listuser[0].history.originaltext }}
           </p>
-          <p v-else>暂无数据，快快去添加把！！！</p>
+          <p v-else style="margin-left: 2%;">暂无数据，快快去添加吧！！！</p>
           <div
+            v-if="listuser.length !== 0"
             style="margin-left: 75%; color: #e67979;"
-            @click="Detail"
+            @click="gothree"
           >查看简文</div>
         </div>
         <div
@@ -159,6 +163,7 @@
           <p
             v-if="listlikehistorysy.length>1"
             style="
+               padding: 0px 15px;
               word-break: break-all;
                       overflow: hidden;
                       text-overflow: ellipsis;
@@ -169,11 +174,11 @@
           >
             {{ listlikehistorysy[1].history.originaltext }}
           </p>
-          <p v-else>暂无数据，快快去添加把！！！</p>
+          <p v-else style="margin-left: 2%;">暂无数据，快快去添加吧！！！</p>
           <div
             v-if="listlikehistorysy.length>1"
             style="margin-left: 75%; color: #e67979;"
-            @click="Detail"
+            @click="gofour"
           >查看简文</div>
         </div>
         <div
@@ -192,6 +197,7 @@
           <p
             v-if="listcollecthistory.length>1"
             style="
+              padding: 0px 15px;
               word-break: break-all;
                       overflow: hidden;
                       text-overflow: ellipsis;
@@ -202,11 +208,11 @@
           >
             {{ listcollecthistory[1].history.originaltext }}
           </p>
-          <p v-else>暂无数据，快快去添加把！！！</p>
+          <p v-else style="margin-left: 2%;">暂无数据，快快去添加吧！！！</p>
           <div
-            v-if="listcollecthistory.length<1"
+            v-if="listcollecthistory.length>1"
             style="margin-left: 75%; color: #e67979;"
-            @click="Detail"
+            @click="gofive"
           >查看简文</div>
         </div>
         <div
@@ -225,6 +231,7 @@
           <p
             v-if="listuser.length>1"
             style="
+               padding: 0px 15px;
               word-break: break-all;
                       overflow: hidden;
                       text-overflow: ellipsis;
@@ -235,11 +242,11 @@
           >
             {{ listuser[1].history.originaltext }}
           </p>
-          <p v-else>暂无数据，快快去添加把！！！</p>
+          <p v-else style="margin-left: 2%;">暂无数据，快快去添加吧！！！</p>
           <div
             v-if="listuser.length>1"
             style="margin-left: 75%; color: #e67979;"
-            @click="Detail"
+            @click="gosix"
           >查看简文</div>
         </div>
       </div>
@@ -257,19 +264,20 @@
             <h3>我的最新简报</h3>
             <p
               v-if="listuserhistorywdy.length !== 0"
-              style="width: 90%;
+              style="min-width: 80%;
                       word-break: break-all;
                       overflow: hidden;
                       text-overflow: ellipsis;
                       display: -webkit-box;
+                      padding: 0px 15px 0px 5px;
                       -webkit-box-orient: vertical;
                       -webkit-line-clamp: 14; /* 超出几行省略 */"
             >{{ listuserhistorywdy[0].originaltext }}</p>
-            <p v-else>暂无数据，快快去添加把！！！</p>
+            <p v-else>暂无数据，快快去添加吧！！！</p>
             <div
               v-if="listuserhistorywdy.length !== 0"
               style="margin-top: 3%; margin-left: 80%; color: #e67979;"
-              @click="ViewOriginalText"
+              @click="MyBriefingDetails"
             >查看简文</div>
           </div>
         </div>
@@ -289,7 +297,7 @@
           大家最新的动态
           <el-button
             type="text"
-            style="margin-left: 88%; font-size: 5px"
+            style="margin-left: 88%; font-size: 15px"
             @click="SeeMore"
           >去论坛看看
           </el-button>
@@ -390,23 +398,11 @@
         </h3>
       </div>
     </div>
-    <div
-      style="
-        width: 30%;
-        height: 600px;
-        margin-left: 68%;
-        background-color: white;
-        border-radius: 20px ;
-      "
-    >
-      <div style="margin-left: 4%; margin-top: 3%; border-radius: 20px ;float: left">
-        <h3>实时热点</h3>
-      </div>
-    </div>
     <div>
       <el-dialog
         :visible.sync="dialogFormVisible"
         :title="dialogTitle"
+        :append-to-body="true"
         @close="cancel"
       >
         <el-form
@@ -422,16 +418,17 @@
             <el-upload
               :action="valueUrl"
               :on-success="handleAvatarSuccess"
+              :before-upload="beforeAvatarUpload"
             >
               <img
                 v-if="formObj.updateuseravatar"
                 :src="formObj.updateuseravatar"
-                style="width: 100px"
+                style="width: 100px;"
               >
               <img
                 v-else
-                :src="userlist.useravatar"
-                style="width: 100px"
+                :src="url"
+                style="width: 100px;"
               >
             </el-upload>
           </el-form-item>
@@ -443,7 +440,7 @@
             <el-input
               v-model="formObj.updateusername"
               autocomplete="off"
-              :placeholder="userlist.username"
+              placeholder="请输入用户名"
             />
           </el-form-item>
 
@@ -456,6 +453,7 @@
               type="password"
               show-password
               autocomplete="off"
+              placeholder="请输入密码"
             />
           </el-form-item>
 
@@ -463,10 +461,10 @@
             label="手机号"
             prop="updateuserphone"
           >
-            <el-inputuserlist
+            <el-input
               v-model="formObj.updateuserphone"
               autocomplete="off"
-              :value="userlist.userphone"
+              placeholder="请输入手机号"
             />
           </el-form-item>
 
@@ -477,15 +475,17 @@
             <el-input
               v-model="formObj.updateusersign"
               autocomplete="off"
-              value="userlist.usersign"
+              placeholder="请输入个性签名"
             />
           </el-form-item>
         </el-form>
         <div
           slot="footer"
-          style="margin-left: 60%"
+          style="margin-left: 60%;"
         >
-          <el-button @click="cancel">取消</el-button>
+          <el-button
+            @click="cancel"
+          >取消</el-button>
           <el-button
             type="primary"
             @click="confirm"
@@ -493,15 +493,35 @@
         </div>
       </el-dialog>
     </div>
+    <div
+      style="
+        width: 30%;
+        height: 500px;
+        margin-left: 68%;
+        background-color: white;
+        border-radius: 20px ;
+      "
+    >
+      <div style="margin-left: 4%; margin-top: 3%; border-radius: 20px ; float: left">
+        <div>
+          <p style="width: 200px; font-size: 20px;">实时热点</p>
+        </div>
+        <div v-for="(item, index) in suyang" :key="index" :style="{ color: index < 3 ? 'red' : 'black' }" style=" width: 420px;border: 0;overflow: hidden;margin-top: 10px;">
+          <div style=" width: 100%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;padding: 5px;box-sizing: border-box;"> {{index+1}}.{{ item }} </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import { userinfo, comment, like, collect, update, listlikehistory, listuserhistory } from '../../api/mine.js'
+import { userinfo, comment, like, collect, update, listlikehistory, listuserhistory, hotspotN, hotspotNN, hotspotNNN } from '../../api/mine.js'
 export default {
   name: 'MineView',
   data() {
     return {
+      suyang: ['字符串1字符串1字符串1字符串1字符串1字符串1字符串1字符串1字符串1字符串1', '字符串2字符串2字符串2字符串2字符串2', '字符串3字符串3字符串3字符串3字符串3', '字符串4', '字符串5', '字符串6', '字符串7', '字符串8', '字符串9'],
+      hotspotlist: [],
       valueUrl: 'https://www.woodymidnight.cn/Summary/document/uploadFile',
       url: this.avatar, // 没有照片时候
       name: this.$store.getters.name,
@@ -547,16 +567,39 @@ export default {
       this.likes()
       this.collects()
       this.historyuseridlist()
+      this.hotspot()
     })
   },
 
   methods: {
+    hotspot() {
+      hotspotN().then((res) => {
+        this.hotspotlist = res.data
+      })
+      this.hotspottwo()
+    },
+    hotspottwo() {
+      hotspotNN().then((res) => {
+        for (var i = 0; i < res.data.length; i++) {
+          this.hotspotlist.push(res.data[i])
+        }
+      })
+      this.hotspotthree()
+    },
+    hotspotthree() {
+      hotspotNNN().then((res) => {
+        for (var i = 0; i < res.data.length; i++) {
+          this.hotspotlist.push(res.data[i])
+        }
+      })
+    },
+
     Detail() {
       this.$router.push({ path: this.redirect || '/BriefingDetails' })
     },
     userinfos() {
       userinfo(this.userid).then((res) => {
-        // console.log('用户信息返回', res)
+        console.log('用户信息返回', res)
         this.userlist = res.data
         this.avatar = res.data.useravatar
         this.username = res.data.username
@@ -580,13 +623,6 @@ export default {
         console.log('列表点赞id返回', this.listlikehistorysy)
       })
     },
-    // likehistorys() {
-    //   likehistory(this.userid).then((res) => {
-    //     console.log('点赞简报返回', res)
-    //     this.listlikehistory = res.data.reverse()
-    //     console.log('列表点赞简报返回', this.listlikehistory)
-    //   })
-    // },
     collects() {
       collect(this.userid).then((res) => {
         // console.log('收藏id返回', res)
@@ -597,43 +633,48 @@ export default {
     // 看个人的
     historyuseridlist() {
       listuserhistory(this.userid).then(res => {
-        // console.log('个人的历史记录', res)
         this.listuserhistorywdy = res.data.reverse()
         console.log('个人的历史记录', this.listuserhistorywdy)
       })
     },
-    update() {
+    updateData() {
+      console.log(this.dialogFormVisible)
       this.dialogFormVisible = true
       this.dialogTitle = '更改个人信息'
       this.formObj.updatepassword = this.userlist.password
-      this.formObj.updateuseravatar = this.userlist.useravatar
       this.formObj.updateusername = this.userlist.username
       this.formObj.updateuserphone = this.userlist.userphone
       this.formObj.updateusersign = this.userlist.usersign
+      this.formObj.updateuseravatar = this.userlist.useravatar
       this.formObj.updateuserid = this.userlist.userid
       this.formObj.updateusertype = this.userlist.usertype
-      console.log('ddddd', this.dialogFormVisible)
-      console.log(this.userlist.useravatar)
-      console.log(this.formObj.updatepassword)
     },
     cancel() {
       this.dialogFormVisible = false
-      console.log(this.formObj.updatepassword)
-      console.log(this.formObj.updateuseravatar)
-      console.log(this.formObj.updateusername)
-      console.log(this.formObj.updateuserphone)
-      console.log(this.formObj.updateusersign)
-      console.log(this.formObj.updateuserid)
-      console.log(this.formObj.updateusertype)
-      console.log(this.listhistory)
     },
     // 查看原文的跳转
-    ViewOriginalText() {
+    MyBriefingDetails() {
       this.$router.push({ path: '/BriefingDetails', query: { historyid: this.listlikehistory[0].historyid }})
     },
-    // 查看点赞的跳转
-    golistlikehistoryone() {
-      this.$router.push({ path: '/BriefingDetails', query: { historyid: this.listlikehistory[0].historyid }})
+
+    // 查看6个
+    goone() {
+      this.$router.push({ path: '/BriefingDetails', query: { historyid: this.listlikehistorysy[0].historyid }})
+    },
+    gotwo() {
+      this.$router.push({ path: '/BriefingDetails', query: { historyid: this.listcollecthistory[0].historyid }})
+    },
+    gothree() {
+      this.$router.push({ path: '/BriefingDetails', query: { historyid: this.listuser[0].historyid }})
+    },
+    gofour() {
+      this.$router.push({ path: '/BriefingDetails', query: { historyid: this.listlikehistorysy[1].historyid }})
+    },
+    gofive() {
+      this.$router.push({ path: '/BriefingDetails', query: { historyid: this.listcollecthistory[1].historyid }})
+    },
+    gosix() {
+      this.$router.push({ path: '/BriefingDetails', query: { historyid: this.listuser[1].historyid }})
     },
     // 查看所以历史记录的跳转
     SeeMore() {
@@ -643,31 +684,25 @@ export default {
       console.log('获取照片路径', res)
       this.formObj.updateuseravatar = res.data.fileUrl
     },
-    // beforeAvatarUpload(file) {
-    //   console.log('失败', file)
-    // },
     confirm() {
       if (!(/^1[34578]\d{9}$/.test(this.formObj.updateuserphone))) { // 手机号正则校验
         this.$notify.error({
           message: '请输入整齐的手机号',
           showClose: false
         })
-      } else { // 手机号正确则无错误信息
-        if (this.formObj.updatepassword === '' || this.formObj.updateuseravatar === '' || this.formObj.updateuserid === '' || this.formObj.updateusername === '' || this.formObj.updateusersign === '' || this.formObj.updateuserphone === '' || this.formObj.updateusertype === '') {
+      } else {
+        console.log(this.formObj)
+        if (this.formObj.updatepassword === '' || this.formObj.updateuseravatar === '' || this.formObj.updateuserid === '' || this.formObj.updateusername === '' || this.formObj.updateusersign === '' || this.formObj.updateuserphone === '') {
           this.$notify.error({
             message: '请先完善好信息',
             showClose: false
           })
         } else {
-          update(this.formObj.updatepassword, this.formObj.updateuseravatar, this.formObj.updateuserid, this.formObj.updateusername, this.formObj.updateusersign, this.formObj.updateuserphone, this.formObj.updateusertyp).then((res) => {
+          update(this.formObj.updatepassword, this.formObj.updateuseravatar, this.formObj.updateuserid, this.formObj.updateusername, this.formObj.updateusersign, this.formObj.updateuserphone, this.formObj.updateusertype).then((res) => {
             console.log('更改返回', res)
             if (res.httpCode === 200) {
               this.dialogFormVisible = false
-              this.$notify({
-                title: '成功',
-                message: '更改成功',
-                type: 'success'
-              })
+              window.location.reload()
             } else {
               this.dialogFormVisible = false
               this.$notify.error({
@@ -683,5 +718,3 @@ export default {
 }
 </script>
 
-<!-- <style scoped>
-</style> -->

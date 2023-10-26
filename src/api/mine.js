@@ -58,7 +58,6 @@ export function listlikehistory() {
 }
 
 export function listuserhistory(userid) {
-  console.log('踩踩我是谁', userid)
   return request({
     url: '/history/selectByAll',
     method: 'post',
@@ -68,23 +67,40 @@ export function listuserhistory(userid) {
   })
 }
 
-// export function collecthistory(collectid) {
-//   return request({
-//     url: '/history/selectByAll',
-//     method: 'post',
-//     data: {
-//       collectid: collectid
-//     }
-//   })
-// }
+// 点赞前n
+export function hotspotN() {
+  console.log('踩踩我是谁')
+  return request({
+    url: '/like/selectTop',
+    method: 'post',
+    params: {
+      n: 3
+    }
+  })
+}
 
-// export function historyall(userid) {
-//   return request({
-//     url: '/history/selectAll',
-//     method: 'post',
-//     userid: userid
-//   })
-// }
+// 评论前n
+export function hotspotNN() {
+  console.log('踩踩我是谁')
+  return request({
+    url: '/comment/selectTop',
+    method: 'post',
+    params: {
+      n: 3
+    }
+  })
+}
+// 收藏前n
+export function hotspotNNN() {
+  console.log('踩踩我是谁')
+  return request({
+    url: '/collect/selectTop',
+    method: 'post',
+    params: {
+      n: 3
+    }
+  })
+}
 
 export function update(updatepassword, updateuseravatar, updateuserid, updateusername, updateusersign, updateuserphone, updateusertype) {
   return request({

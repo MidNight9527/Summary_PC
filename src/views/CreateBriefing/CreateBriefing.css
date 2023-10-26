@@ -39,7 +39,7 @@
 
 /* 左部分 */
 .stepsOne_line_leftBox{
-  border: 1px solid rgba(128, 128, 128, 0.466);
+  /* border: 1px solid rgba(128, 128, 128, 0.466); */
   width: 25%;
   height: 175px;
   border-radius: 5px;
@@ -47,7 +47,7 @@
 
 /* 右部分 */
 .stepsOne_line_rightBox{
-  border: 1px solid rgba(128, 128, 128, 0.466);
+  /* border: 1px solid rgba(128, 128, 128, 0.466); */
   width: 25%;
   height: 175px;
 border-radius: 5px;
@@ -108,7 +108,7 @@ border-radius: 5px;
 /* 按钮集合 */
 .buttonBox{
   /* border: 1px solid red; */
-  margin-top: 25px;
+  margin-top: 45px;
   text-align: center;
   display: flex;
   justify-content: space-evenly;
