@@ -50,7 +50,7 @@
         </el-menu>
       </el-header>
       <!--页面内容-->
-      <el-main>
+      <el-main :style="{padding: 0}">
         <router-view />
       </el-main>
     </el-container>

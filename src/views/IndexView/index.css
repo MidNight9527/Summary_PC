@@ -1,81 +1,92 @@
-.background{
-	width: 100%;
+body {
+    overflow: hidden;
 }
+
+.background{
+    scroll-snap-type: y mandatory;
+    overflow: scroll;
+    /*overflow: hidden;*/
+    height: 100vh;
+}
+
+.background-child {
+    width: 100vw;
+    height: 100vh;
+    scroll-snap-align: start;
+    overflow: hidden;
+}
+
 
 .img{
 	width: 100%;
-	margin-top: -10px;
+    height: 100%;
+}
+
+.index-briefing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .glide{
-	margin-left: 540px;
-	margin-top: 20px;
-	font-size:30px;
-	font-weight:blod
+	font-size: 30px;
+	font-weight: bold;
 }
 .downward{
 	width: 30px;
 	margin-top: 30px;
-	margin-left:680px;
-}
-
-.LeftInput{
-  margin-top: 45px;
-  margin-left: 240px;
-}
-.yuanwen{
-  font-weight:bold;
-  width: 50px;
-  height: 25px;
-	line-height: 25px;
-  text-align:center;
-  font-family: 楷体;
-  border-radius: 5px;
-  background-color: rgb(246, 246, 193);
-  margin: 0,auto;
-}
-.ChoiceConversion{
-  width: 200px;
-  height: 300px;
-  margin-top: 190px;
-  margin-left: 100px;
-}
-.conversion{
-  width: 50px;
-  margin-top: 30px;
-  margin-left: 70px;
-}
-.zhaiyao{
-  font-weight:bold;
-  width: 70px;
-  height: 25px;
-	line-height: 25px;
-  text-align:center;
-  font-family: 楷体;
-  border-radius: 5px;
-  background-color: rgb(246, 246, 193);
-  margin: 0,auto;
-}
-.reightInput{
-  margin-top: 45px;
-  margin-left: 200px;
-}
-.Historysy{
-    position: absolute;
-    font-family: 楷体;
-    margin-left: 200px;
-    font-size:20px;
-    margin-top: 30px;
 }
 .BigFlex{
-	margin-top: 30px;
-	margin-left: 90px;
-	display: flex;
-	height: 500px;
+    margin-top: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+.LeftInput,
+.reightInput {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.yuanwen{
+    font-weight:bold;
+    width: 100px;
+    height: 25px;
+    line-height: 25px;
+    text-align:center;
+    font-family: 楷体, serif;
+    border-radius: 5px;
+    background-color: rgb(246, 246, 193);
+    margin: auto;
+}
+.conversion{
+    width: 50px;
+    margin-right: 100px;
+    margin-left: 100px;
+}
+.zhaiyao{
+    font-weight:bold;
+    width: 70px;
+    height: 25px;
+    line-height: 25px;
+    text-align:center;
+    font-family: 楷体, serif;
+    border-radius: 5px;
+    background-color: rgb(246, 246, 193);
+    margin: auto;
+}
+
 .Warningmessage{
-	margin-left: 600px;
 	margin-top: 20px;
-	font-size:8px;
+	font-size:10px;
 	color: #f8b8b8;
+}
+
+.index-input {
+    width:300px;
+    margin-top:15px;
+    box-shadow: 10px 10px 15px -10px;
+    border-radius: 15px;
 }

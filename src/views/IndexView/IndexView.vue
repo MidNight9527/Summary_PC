@@ -1,10 +1,12 @@
 <template>
   <div class="background">
-    <img
-      src="../../icons/indexphoto.jpg"
-      class="img"
-    >
-    <div class="NOhaveuerifo">
+    <div class="background-child">
+      <img
+        src="../../icons/indexphoto.jpg"
+        class="img"
+      >
+    </div>
+    <div class="index-briefing background-child">
       <div class="glide">体验游客版萃文匠心的魅力</div>
       <img
         class="downward"
@@ -14,21 +16,14 @@
         <div class="LeftInput">
           <!-- 这个div是左侧的输入框 -->
           <div class="yuanwen">原文</div>
-          <div class="input">
-            <el-input
-              v-model="textarea2"
-              type="textarea"
-              :autosize="{ minRows:17, maxRows: 17}"
-              placeholder="请输入内容"
-              style="width:300px;
-                   margin-left:-120px;
-                   margin-top:15px;
-                   box-shadow: 10px 10px 15px -10px
-                   border-radius: 15px;
-            "
-              @input="search($event)"
-            />
-          </div>
+          <el-input
+            class="index-input"
+            v-model="textarea2"
+            type="textarea"
+            :autosize="{ minRows:17, maxRows: 17}"
+            placeholder="请输入内容"
+            @input="search($event)"
+          />
         </div>
         <div class="ChoiceConversion">
           <img
@@ -41,21 +36,14 @@
         <div class="reightInput">
           <!-- 这个div是左侧的输入框 -->
           <div class="zhaiyao">摘要文本</div>
-          <div class="inputtwo">
-            <el-input
-              v-model="textarea3"
-              type="textarea"
-              :disabled="disabled"
-              :autosize="{ minRows:17, maxRows: 17}"
-              placeholder="请先输入转换文章"
-              style="width:300px;
-                   margin-left:-120px;
-                   margin-top:15px;
-                  box-shadow: 10px 10px 15px -10px
-                   border-radius: 15px;
-            "
-            />
-          </div>
+          <el-input
+            class="index-input"
+            v-model="textarea3"
+            type="textarea"
+            :disabled="disabled"
+            :autosize="{ minRows:17, maxRows: 17}"
+            placeholder="请先输入转换文章"
+          />
         </div>
       </div>
     </div>

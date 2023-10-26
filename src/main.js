@@ -9,6 +9,8 @@ import './icons'
 // element ui
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+// 动画
+import 'animate.css'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)
