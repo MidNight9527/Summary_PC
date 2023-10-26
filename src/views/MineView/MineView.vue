@@ -398,6 +398,19 @@
         </h3>
       </div>
     </div>
+    <div
+      style="
+        width: 30%;
+        height: 600px;
+        margin-left: 68%;
+        background-color: white;
+        border-radius: 20px ;
+      "
+    >
+      <div style="margin-left: 4%; margin-top: 3%; border-radius: 20px ;float: left">
+        <h3>实时热点</h3>
+      </div>
+    </div>
     <div>
       <el-dialog
         :visible.sync="dialogFormVisible"
