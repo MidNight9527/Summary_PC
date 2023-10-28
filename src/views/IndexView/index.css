@@ -1,23 +1,18 @@
-body {
-    overflow: hidden;
-}
-
 .background{
     scroll-snap-type: y mandatory;
-    overflow: scroll;
-    /*overflow: hidden;*/
-    height: 100vh;
+    overflow-x: hidden;
+    height: 100%;
 }
 
 .background-child {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     scroll-snap-align: start;
     overflow: hidden;
 }
 
 
-.img{
+.indexPhoto{
 	width: 100%;
     height: 100%;
 }
@@ -38,7 +33,6 @@ body {
 	margin-top: 30px;
 }
 .BigFlex{
-    margin-top: 45px;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -3,7 +3,7 @@
     <div class="background-child">
       <img
         src="../../icons/indexphoto.jpg"
-        class="img"
+        class="indexPhoto"
       >
     </div>
     <div class="index-briefing background-child">
@@ -57,7 +57,6 @@
 </template>
 
 <script>
-import './index.css'
 import { getSummery } from '../../api/index.js'
 export default {
   data() {
@@ -98,4 +97,8 @@ export default {
 
 }
 </script>
+
+<style scoped>
+@import 'index.css';
+</style>
 

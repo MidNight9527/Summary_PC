@@ -2,7 +2,7 @@
   <div>
     <el-container>
       <!--页头-->
-      <el-header :style="{padding: 0}">
+      <el-header class="el-header">
         <el-menu
           router
           :default-active="activeIndex"
@@ -50,7 +50,7 @@
         </el-menu>
       </el-header>
       <!--页面内容-->
-      <el-main :style="{padding: 0}">
+      <el-main class="el-main">
         <router-view />
       </el-main>
     </el-container>
@@ -94,12 +94,29 @@ export default {
 </script>
 
 <style scoped>
+.el-header {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  padding: 0;
+}
 .el-menu-demo {
   margin-bottom: 20px;
 }
 
 .footer {
   color: #888;
+}
+
+.el-main {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 60px;
+  bottom: 0;
+  //overflow-y: scroll;
+  padding: 0;
+  margin: 0;
 }
 
 .img{
