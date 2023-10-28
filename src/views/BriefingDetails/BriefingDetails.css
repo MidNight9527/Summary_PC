@@ -1,32 +1,55 @@
-
-.reply-comment {
-  margin: 10px 0 0 0;
+.header {
+  margin: 20px;
 }
-.reply-comment input {
+.header-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-userInfo {
+  display: flex;
+  align-items: center;
+}
+.header-content-box {
+  margin-top: 30px;
+}
+.header-content {
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+  padding: 20px;
+  min-height: 200px;
+}
+.body {
+  margin-top: 20px;
+  padding: 0 40px;
+}
+.body-comment{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.comment {
+  display: flex;
+  align-items: center;
+  width: 40%;
+}
+.comment-input {
   height: 40px;
   border-radius: 5px;
   outline: none;
-  width: 70%;
+  width: 80%;
   font-size: 18px;
   padding: 0 20px;
-  /* border: 2px solid #f8f8f8; */
-  border: 2px solid skyblue;
+  border: 2px solid #409eff;
+  margin-right: 10px;
 }
-/* 发布评论按钮 */
-.reply-comment button {
-  width: 15%;
-  height: 43px;
-  border: 0;
-  border-radius: 5px;
-  font-size: 18px;
-  font-weight: 500;
-  color: #fff;
-  background-color: rgb(118, 211, 248);
-  cursor: pointer;
-  letter-spacing: 2px;
-  margin-left: 20px;
+.comment-context {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eeeeee;
+  margin: 0 80px;
 }
-/* 鼠标经过字体加粗 */
-.reply-comment button:hover {
-  font-weight: 600;
+.comment-context-avatar {
+  margin-right: 15px;
 }

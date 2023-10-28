@@ -1,199 +1,72 @@
 <template>
   <div>
-    <div style="margin-top: 2%; ">
-      <div
-        style="
-          width: 96%;
-          margin-top: 0%;
-          margin-left: 2%;
-          border-radius: 20px;
-          background-color: white;
-        "
-      >
-        <div style="margin-left: 4%; margin-top: 3%">
-          <div style="padding-top: 1px;text-align: center;">
-            <div style=" margin-top: 30px;">
-              <el-avatar
-                :size="100"
-                :src="userlist.useravatar"
-              /><h3>{{ name }}</h3>
-            </div>
+    <div class="header">
+      <el-card shadow="always">
+        <div class="header-box">
+          <div class="header-userInfo">
+            <el-avatar
+              :style="{ marginRight: '10px' }"
+              :size="50"
+              :src="userlist.useravatar"
+            />
+            <h3>{{ name }}</h3>
           </div>
-          <h3>
-            <el-button
+          <el-button
+            type="success"
+            @click="moban"
+          >下载模板
+          </el-button>
+        </div>
+        <el-row type="flex" class="header-content-box" justify="space-around">
+          <el-col :span="11">
+            <div class="header-content">
+              <h4>原文</h4>
+              <p>{{ history.originaltext }}</p>
+            </div>
+          </el-col>
+          <el-col :span="11">
+            <div class="header-content ">
+              <h4>摘要文本</h4>
+              <p>{{ history.summarytext }}</p>
+            </div>
+          </el-col>
+        </el-row>
+      </el-card>
+      <el-card class="body" shadow="always">
+        <div class="body-comment">
+          <h3>评论</h3>
+          <div class="comment">
+            <input
+              v-model="formObj.insertcommenttext"
+              class="comment-input"
               type="text"
-              style="margin-left: 82%; font-size: 5px"
-              @click="moban"
-            >下载模板
-            </el-button>
-          </h3>
-        </div>
-        <div
-          class="mine comment"
-          style="
-            width: 80%;
-            margin-top: 1%;
-            margin-left: 10%;
-            border: 3px solid #e5e6eb;
-            border-radius: 20px;
-          "
-        >
-          <div style="margin-left: 4%; margin-top: 1%;">
-            <h4>原文</h4>
-            <p>{{ history.originaltext }}</p>
-          </div>
-        </div>
-        <div style="text-align: center;">
-          <img
-            src="../../icons/conversion.png"
-            style="width: 80px;"
-          >
-        </div>
-        <div
-          class="mine comment"
-          style="
-            width: 80%;
-            margin-top: 1%;
-            margin-left: 10%;
-            border: 3px solid #e5e6eb;
-            border-radius: 20px;
-          "
-        >
-          <div style="margin-left: 4%; margin-top: 1%;">
-            <h4>摘要文本</h4>
-            <p>{{ history.summarytext }}</p>
-          </div>
-        </div>
-        <div style="text-align: right; padding-right: 10%;">
-          <div
-            style="float: right; margin-left: 20px;"
-            @click="likebtn"
-          >
-            <div v-if="likeShow">
-              <img
-                src="../../icons/like.png"
-                style=" width: 20px; margin-top: 20px;"
-                alt=""
-              >
-            </div>
-            <div v-else>
-              <img
-                src="../../icons/likeed.png"
-                style=" width: 20px; margin-top: 20px;"
-                alt=""
-              >
-            </div>
-          </div>
-          <div
-            @click="collectbtn"
-          >
-            <img
-              v-if="collectShow"
-              src="../../icons/collect.png"
-              style=" width: 20px;  margin-top: 20px;"
-              alt=""
+              placeholder="请输入评论 . . ."
+              @keyup.enter="reply_sumbit(item, 0)"
             >
-            <img
-              v-else
-              src="../../icons/collected.png"
-              style=" width: 20px;  margin-top: 20px;"
-              alt=""
-            >
-
+            <el-button
+              type="primary"
+              @click="reply_sumbit"
+            >发表评论</el-button>
           </div>
-          <div style="height: 20px;" />
         </div>
-      </div>
-    </div>
-    <div style="margin-top: 1%;">
-      <div
-        style="
-          width: 96%;
-          margin-left: 2%;
-          border-radius: 20px;
-          background-color: white;
-        "
-      >
-        <div
-          class="mine comment"
-          style="
-            width: 80%;
-            margin-left: 10%;
-            border: 3px solid #e5e6eb;
-            border-radius: 20px;
-          "
-        >
-          <div style="margin-left: 4%;">
-            <h4>评论  <div class="reply-comment">
-              <input
-                v-model="formObj.insertcommenttext"
-                style="height: 40px;border-radius: 5px;
-                     outline: none;
-                     margin-top: 10px;
-                     width: 70%;
-                     font-size: 18px;
-                     padding: 0 20px;
-                     border: 2px solid skyblue;"
-                type="text"
-                placeholder="请输入评论 . . ."
-                @keyup.enter="reply_sumbit(item, 0)"
-              >
-              <button
-                style="width: 15%;
-                  height: 43px;
-                   border: 0;
-                  border-radius: 5px;
-                    font-size: 18px;
-                   font-weight: 500;
-                    color: #fff;
-                    background-color: rgb(118, 211, 248);
-                     cursor: pointer;
-                   letter-spacing: 2px;
-                       margin-left: 20px;"
-                @click="reply_sumbit"
-              >发表评论</button>
-            </div>
-              <div
-                v-if="sysb"
-                style="margin-top: 20px;"
-              >暂无评论，请你做首发人</div>
-              <div v-else>
-                <div style="display: flex; align-items: center; margin-top: 10px; border: 3px solid #e5e6eb;border-radius: 20px;">
-                  <el-avatar
-                    :size="50"
-                    :src="listuser[0].user.useravatar"
-                    style=" float: left; margin-left: 6px; "
-                  />
-                  <div style="margin-left: 2%; width: 90%;">
-                    <h5>{{ listuser[0].user.username }}<p>{{ listuser[0].commenttext }}</p></h5>
-                  </div>
-                </div>
-                <div style="display: flex; align-items: center;  margin-top: 10px; border: 3px solid #e5e6eb;border-radius: 20px;">
-                  <el-avatar
-                    :size="50"
-                    :src="listuser[1].user.useravatar"
-                    style=" float: left; margin-left: 6px;"
-                  />
-                  <div style="margin-left: 2%; width: 90%;">
-                    <h5>{{ listuser[1].user.username }}<p>{{ listuser[1].commenttext }}</p></h5>
-                  </div>
-                </div>
-                <div style="display: flex; align-items: center; margin-top: 10px; border: 3px solid #e5e6eb;border-radius: 20px;">
-                  <el-avatar
-                    :size="50"
-                    :src="listuser[2].user.useravatar"
-                    style=" float: left; margin-left: 6px;"
-                  />
-                  <div style="margin-left: 2%; width: 90%;">
-                    <h5>{{ listuser[2].user.username }}<p>{{ listuser[2].commenttext }}</p></h5>
-                  </div>
-                </div>
+        <div>
+          <div
+            v-for="(e, i) in listuser"
+            :key="i"
+          >
+            <div class="comment-context" v-if="i < 6">
+              <el-avatar
+                class="comment-context-avatar"
+                :size="50"
+                :src="e.user.useravatar"
+              />
+              <div>
+                <h5>{{ e.user.username }}<p>{{ e.commenttext }}</p></h5>
               </div>
-
-              <div style="height: 10px;" />
-            </h4></div>
+            </div>
+          </div>
         </div>
-      </div>
+      </el-card>
     </div>
   </div>
 </template>
@@ -389,5 +262,6 @@ export default {
 }
 </script>
 
-<!-- <style scoped>
-</style> -->
+<style scoped>
+@import "BriefingDetails.css";
+</style>
