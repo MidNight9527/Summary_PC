@@ -17,7 +17,11 @@
           >下载模板
           </el-button>
         </div>
-        <el-row type="flex" class="header-content-box" justify="space-around">
+        <el-row
+          type="flex"
+          class="header-content-box"
+          justify="space-around"
+        >
           <el-col :span="11">
             <div class="header-content">
               <h4>原文</h4>
@@ -31,8 +35,50 @@
             </div>
           </el-col>
         </el-row>
+        <div style="text-align: right;">
+          <div
+            style="float: right; margin-left: 20px;"
+            @click="likebtn"
+          >
+            <div v-if="likeShow">
+              <img
+                src="../../icons/like.png"
+                style=" width: 20px; margin-top: 20px;"
+                alt=""
+              >
+            </div>
+            <div v-else>
+              <img
+                src="../../icons/likeed.png"
+                style=" width: 20px; margin-top: 20px;"
+                alt=""
+              >
+            </div>
+          </div>
+          <div
+            @click="collectbtn"
+          >
+            <img
+              v-if="collectShow"
+              src="../../icons/collect.png"
+              style=" width: 20px;  margin-top: 20px;"
+              alt=""
+            >
+            <img
+              v-else
+              src="../../icons/collected.png"
+              style=" width: 20px;  margin-top: 20px;"
+              alt=""
+            >
+
+          </div>
+        </div>
+        <div style="height: 20px;" />
       </el-card>
-      <el-card class="body" shadow="always">
+      <el-card
+        class="body"
+        shadow="always"
+      >
         <div class="body-comment">
           <h3>评论</h3>
           <div class="comment">
@@ -54,7 +100,10 @@
             v-for="(e, i) in listuser"
             :key="i"
           >
-            <div class="comment-context" v-if="i < 6">
+            <div
+              v-if="i < 6"
+              class="comment-context"
+            >
               <el-avatar
                 class="comment-context-avatar"
                 :size="50"
