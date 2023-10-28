@@ -1,415 +1,130 @@
 <template>
-  <div>
-    <div
-      class="mine head"
-      style="
-        background-color: #deecfb;
-        width: 96%;
-        margin-left: 2%;
-        height: 300px;
-        margin-top: 1%;
-        text-align: center;
-        line-height: 30px;
-        border-radius: 10px
-      "
-    >
+  <div class="mineView">
+    <div class="mine-head">
       <el-avatar
         :size="100"
         :src="userlist.useravatar"
-        style="margin-top: 10px; margin-bottom: 10px;"
+        style="margin: 10px 0"
       />
-      <h2>名字：{{ name }}</h2>
-      <h2>个性签名：{{ userlist.usersign }}</h2>
+      <div class="mine-head-text">名字：{{ name }}</div>
+      <div class="mine-head-text">个性签名：{{ userlist.usersign }}</div>
       <el-button @click="updateData">更改个人信息</el-button>
     </div>
-    <div style="margin-top: 2%; height: 600px">
-      <div
-        style="
-          width: 65%;
-          height: 550px;
-          margin-top: 0%;
-          margin-left: 2%;
-          background-color: white;
-          float: left;
-          border-radius: 20px
-        "
+    <div class="mine-body">
+      <el-row
+        type="flex"
+        class="row-bg"
       >
-        <div style="margin-left: 4%; margin-top: 3%">
-          <h3>
-            我的关注
-            <el-button
-              type="text"
-              style="margin-left: 80%; font-size: 15px"
-              @click="SeeMore"
-            >去论坛看看
-            </el-button>
-          </h3>
-        </div>
-        <div
-          class="mine like"
-          style="
-            width: 29%;
-            height: 200px;
-            margin-top: 0%;
-            margin-left: 4%;
-            float: left;
-            border: 2px solid #e5e6eb;
-            border-radius: 10px
-          "
-        >
-          <h5 style="margin-left: 2%;">我点赞的文章一</h5>
-          <p
-            v-if="listlikehistorysy.length !== 0"
-            style="
-              padding: 0px 15px;
-              word-break: break-all;
-                      overflow: hidden;
-                      text-overflow: ellipsis;
-                      display: -webkit-box;
-                      -webkit-box-orient: vertical;
-                      -webkit-line-clamp: 3; /* 超出几行省略 */
-                      text-indent: 40px;"
-          >
-            {{ listlikehistorysy[0].history.originaltext }}
-          </p>
-          <p v-else style="margin-left: 2%;">暂无数据，快快去添加吧！！！</p>
-          <div
-            v-if="listlikehistorysy.length !== 0"
-            style="margin-left: 75%; color: #e67979;"
-            @click="goone"
-          >查看简文</div>
-        </div>
-        <div
-          class="mine collect"
-          style="
-            width: 29%;
-            height: 200px;
-            margin-top: 0%;
-            margin-left: 2%;
-            float: left;
-            border: 2px solid #e5e6eb;
-            border-radius: 10px
-          "
-        >
-          <h5 style="margin-left: 2%;">我收藏的文章一</h5>
-          <p
-            v-if="listcollecthistory.length !== 0"
-            style="
-               padding: 0px 15px;
-              word-break: break-all;
-                      overflow: hidden;
-                      text-overflow: ellipsis;
-                      display: -webkit-box;
-                      -webkit-box-orient: vertical;
-                      -webkit-line-clamp: 3; /* 超出几行省略 */
-                      text-indent: 40px;"
-          >
-            {{ listcollecthistory[0].history.originaltext }}
-          </p>
-          <p v-else style="margin-left: 2%;">暂无数据，快快去添加吧！！！</p>
-          <div
-            v-if="listcollecthistory.length !== 0"
-            style="margin-left: 75%; color: #e67979;"
-            @click="gotwo"
-          >查看简文</div>
-        </div>
-        <div
-          class="mine comment"
-          style="
-            width: 29%;
-            height: 200px;
-            margin-top: 0%;
-            margin-left: 2%;
-            float: left;
-            border: 2px solid #e5e6eb;
-            border-radius: 10px
-          "
-        >
-          <h5 style="margin-left: 2%;">我评论的文章一</h5>
-          <p
-            v-if="listuser.length !== 0"
-            style="
-               padding: 0px 15px;
-              word-break: break-all;
-                      overflow: hidden;
-                      text-overflow: ellipsis;
-                      display: -webkit-box;
-                      -webkit-box-orient: vertical;
-                      -webkit-line-clamp: 3; /* 超出几行省略 */
-                      text-indent: 40px;"
-          >
-            {{ listuser[0].history.originaltext }}
-          </p>
-          <p v-else style="margin-left: 2%;">暂无数据，快快去添加吧！！！</p>
-          <div
-            v-if="listuser.length !== 0"
-            style="margin-left: 75%; color: #e67979;"
-            @click="gothree"
-          >查看简文</div>
-        </div>
-        <div
-          class="mine like"
-          style="
-            width: 29%;
-            height: 200px;
-            margin-top: 1%;
-            margin-left: 4%;
-            float: left;
-            border: 2px solid #e5e6eb;
-            border-radius: 10px
-          "
-        >
-          <h5 style="margin-left: 2%;">我点赞的文章二</h5>
-          <p
-            v-if="listlikehistorysy.length>1"
-            style="
-               padding: 0px 15px;
-              word-break: break-all;
-                      overflow: hidden;
-                      text-overflow: ellipsis;
-                      display: -webkit-box;
-                      -webkit-box-orient: vertical;
-                      -webkit-line-clamp: 3; /* 超出几行省略 */
-                      text-indent: 40px;"
-          >
-            {{ listlikehistorysy[1].history.originaltext }}
-          </p>
-          <p v-else style="margin-left: 2%;">暂无数据，快快去添加吧！！！</p>
-          <div
-            v-if="listlikehistorysy.length>1"
-            style="margin-left: 75%; color: #e67979;"
-            @click="gofour"
-          >查看简文</div>
-        </div>
-        <div
-          class="mine collect"
-          style="
-            width: 29%;
-            height: 200px;
-            margin-top: 1%;
-            margin-left: 2%;
-            float: left;
-            border: 2px solid #e5e6eb;
-            border-radius: 10px
-          "
-        >
-          <h5 style="margin-left: 2%;">我收藏的文章二</h5>
-          <p
-            v-if="listcollecthistory.length>1"
-            style="
-              padding: 0px 15px;
-              word-break: break-all;
-                      overflow: hidden;
-                      text-overflow: ellipsis;
-                      display: -webkit-box;
-                      -webkit-box-orient: vertical;
-                      -webkit-line-clamp: 3; /* 超出几行省略 */
-                      text-indent: 40px;"
-          >
-            {{ listcollecthistory[1].history.originaltext }}
-          </p>
-          <p v-else style="margin-left: 2%;">暂无数据，快快去添加吧！！！</p>
-          <div
-            v-if="listcollecthistory.length>1"
-            style="margin-left: 75%; color: #e67979;"
-            @click="gofive"
-          >查看简文</div>
-        </div>
-        <div
-          class="mine comment"
-          style="
-            width: 29%;
-            height: 200px;
-            margin-top: 1%;
-            margin-left: 2%;
-            float: left;
-            border: 2px solid #e5e6eb;
-            border-radius: 10px
-          "
-        >
-          <h5 style="margin-left: 2%;">我评论的文章二</h5>
-          <p
-            v-if="listuser.length>1"
-            style="
-               padding: 0px 15px;
-              word-break: break-all;
-                      overflow: hidden;
-                      text-overflow: ellipsis;
-                      display: -webkit-box;
-                      -webkit-box-orient: vertical;
-                      -webkit-line-clamp: 3; /* 超出几行省略 */
-            "
-          >
-            {{ listuser[1].history.originaltext }}
-          </p>
-          <p v-else style="margin-left: 2%;">暂无数据，快快去添加吧！！！</p>
-          <div
-            v-if="listuser.length>1"
-            style="margin-left: 75%; color: #e67979;"
-            @click="gosix"
-          >查看简文</div>
-        </div>
-      </div>
-      <div
-        style="
-          width: 30%;
-          height: 550px;
-          margin-left: 68%;
-          background-color: white;
-          border-radius: 20px
-        "
-      >
-        <div style="margin-left: 4%; margin-top: 3%; float: left; ">
-          <div style="">
-            <h3>我的最新简报</h3>
-            <p
-              v-if="listuserhistorywdy.length !== 0"
-              style="min-width: 80%;
-                      word-break: break-all;
-                      overflow: hidden;
-                      text-overflow: ellipsis;
-                      display: -webkit-box;
-                      padding: 0px 15px 0px 5px;
-                      -webkit-box-orient: vertical;
-                      -webkit-line-clamp: 14; /* 超出几行省略 */"
-            >{{ listuserhistorywdy[0].originaltext }}</p>
-            <p v-else>暂无数据，快快去添加吧！！！</p>
-            <div
-              v-if="listuserhistorywdy.length !== 0"
-              style="margin-top: 3%; margin-left: 80%; color: #e67979;"
-              @click="MyBriefingDetails"
-            >查看简文</div>
+        <el-col :span="14">
+          <div>
+            <div class="mine-care">
+              <h3>我的收藏</h3>
+              <el-button
+                type="text"
+                @click="SeeMore"
+              >去论坛看看</el-button>
+            </div>
+            <div class="mine-care-body">
+              <el-empty v-if="listcollecthistory.length == 0" description="暂无数据，快去使用吧！"></el-empty>
+              <div
+                v-else
+                v-for="(e, i) in listcollecthistory"
+                :key="i"
+              >
+                <el-card
+                  v-if="i < 4"
+                  shadow="hover"
+                  class="mine-care-card"
+                >
+                  <div class="ellipsis-line">{{ e.history.originaltext }}</div>
+                  <el-button
+                    type="text"
+                    class="mine-care-button"
+                    @click="goone(e.historyid)"
+                  >查看简文</el-button>
+                </el-card>
+              </div>
+            </div>
+            <div class="mine-comment">
+              <div class="mine-comment-title">
+                <h3 style="margin: 0;padding: 0;">大家最新的动态</h3>
+                <el-button
+                  type="text"
+                  @click="SeeMore"
+                >去论坛看看</el-button>
+              </div>
+              <el-empty v-if="listlikehistory.length == 0" description="暂无数据，快去使用吧！"></el-empty>
+              <div
+                v-else
+                v-for="(e, i) in listlikehistory"
+                :key="i"
+              >
+                <div
+                  v-if="i < 5"
+                  class="mine-comment-context"
+                >
+                  <el-avatar
+                    style="margin-right: 10px;"
+                    :size="40"
+                    :src="e.user.useravatar"
+                  />
+                  <p class="ellipsis-line">{{ e.summarytext }}</p>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <div
-      style="
-        width: 65%;
-        margin-left: 2%;
-        background-color: white;
-        float: left;
-        border-radius: 20px
-      "
-    >
-      <div style="margin-left: 4%; margin-top: 3% ; border-radius: 20px;">
-        <h3>
-          大家最新的动态
-          <el-button
-            type="text"
-            style="margin-left: 88%; font-size: 15px"
-            @click="SeeMore"
-          >去论坛看看
-          </el-button>
-          <div style="width: 95%;">
-            <div
-              style="border: 2px solid #e5e6eb; height: 90px; border-radius: 20px ;
-                      margin-top:10px"
-            >
-              <el-avatar
-                style="float: left; margin-top: 1.5%; margin-left: 3%;"
-                :size="40"
-                :src="listlikehistory[0].user.useravatar"
-              />
-              <p
-                style="margin-left: 2%;
-                      word-break: break-all;
-                      overflow: hidden;
-                      text-overflow: ellipsis;
-                      display: -webkit-box;
-                      -webkit-box-orient: vertical;
-                      -webkit-line-clamp: 2; /* 超出几行省略 */"
-              >:{{ listlikehistory[0].originaltext }}</p>
-            </div>
-            <div
-              style="border: 2px solid #e5e6eb; height: 90px; border-radius: 20px ;
-                      margin-top:10px"
-            >
-              <el-avatar
-                style=" float: left; margin-top: 1.5%; margin-left: 3%;"
-                :size="40"
-                :src="listlikehistory[0].user.useravatar"
-              />
-              <p
-                style="margin-left: 1.8%; word-break: break-all;
-                      overflow: hidden;
-                      text-overflow: ellipsis;
-                      display: -webkit-box;
-                      -webkit-box-orient: vertical;
-                      -webkit-line-clamp: 2; /* 超出几行省略 */"
-              >:{{ listlikehistory[0].summarytext }}</p>
-            </div>
-            <div
-              style="border: 2px solid #e5e6eb; height: 90px; border-radius: 20px ;
-                      margin-top:10px"
-            >
-              <el-avatar
-                style=" float: left; margin-top: 1.5%; margin-left: 3%;"
-                :size="40"
-                :src="listlikehistory[2].user.useravatar"
-              />
-              <p
-                style="margin-left: 1.8%; word-break: break-all;
-                      overflow: hidden;
-                      text-overflow: ellipsis;
-                      display: -webkit-box;
-                      -webkit-box-orient: vertical;
-                      -webkit-line-clamp: 2; /* 超出几行省略 */"
-              >:{{ listlikehistory[2].summarytext }}</p>
-            </div>
-            <div
-              style="border: 2px solid #e5e6eb; height: 90px; border-radius: 20px ;
-                      margin-top:10px"
-            >
-              <el-avatar
-                style=" float: left; margin-top: 1.5%; margin-left: 3%;"
-                :size="40"
-                :src="listlikehistory[3].user.useravatar"
-              />
-              <p
-                style="margin-left: 1.8%; word-break: break-all;
-                      overflow: hidden;
-                      text-overflow: ellipsis;
-                      display: -webkit-box;
-                      -webkit-box-orient: vertical;
-                      -webkit-line-clamp: 2; /* 超出几行省略 */"
-              >:{{ listlikehistory[3].summarytext }}</p>
-            </div>
-            <div
-              style="border: 2px solid #e5e6eb; height: 90px; border-radius: 20px ;
-                      margin-top:10px"
-            >
-              <el-avatar
-                style=" float: left; margin-top: 1.5%; margin-left: 3%;"
-                :size="40"
-                :src="listlikehistory[4].user.useravatar"
-              />
-              <p
-                style="margin-left: 1.8%; word-break: break-all;
-                      overflow: hidden;
-                      text-overflow: ellipsis;
-                      display: -webkit-box;
-                      -webkit-box-orient: vertical;
-                      -webkit-line-clamp: 2; /* 超出几行省略 */"
-              >:{{ listlikehistory[4].summarytext }}</p>
-            </div>
-            <!-- </div> -->
+        </el-col>
+        <div style="width:20px" />
+        <el-col :span="10">
+          <div class="mine-left">
+            <el-card shadow="always">
+              <div>
+                <p style="font-size: 20px;">我的简报</p>
+              </div>
+              <div>
+                <el-empty v-if="listuserhistorywdy.length == 0" description="暂无数据，快去使用吧！"></el-empty>
+                <div
+                  v-else
+                  v-for="(e, i) in listuserhistorywdy"
+                  :key="i"
+                >
+                  <div
+                    v-if="i < 5"
+                    class="mine-my-summary"
+                  >
+                    <p
+                      class="ellipsis-line"
+                      style="margin-right: 20px;"
+                    >{{ i+1 }}.{{ e.originaltext }}</p>
+                    <el-button
+                      type="text"
+                      @click="MyBriefingDetails(e.historyid)"
+                    >
+                      查看简文
+                    </el-button>
+                  </div>
+                </div>
+              </div>
+            </el-card>
           </div>
-        </h3>
-      </div>
-    </div>
-    <div
-      style="
-        width: 30%;
-        height: 600px;
-        margin-left: 68%;
-        background-color: white;
-        border-radius: 20px ;
-      "
-    >
-      <div style="margin-left: 4%; margin-top: 3%; border-radius: 20px ;float: left">
-        <h3>实时热点</h3>
-      </div>
+          <div class="mine-left">
+            <el-card shadow="always">
+              <div>
+                <p style="font-size: 20px;">实时热点</p>
+              </div>
+              <el-empty v-if="hotspotlist.length == 0" description="暂无数据，快去使用吧！"></el-empty>
+              <div
+                v-else
+                v-for="(item, index) in hotspotlist"
+                :key="index"
+              >
+                <p v-if="index < 10" class="ellipsis-line"> {{ index+1 }}.{{ item.history.originaltext }} </p>
+              </div>
+            </el-card>
+          </div>
+        </el-col>
+      </el-row>
+      <div style="height:20px" />
     </div>
     <div>
       <el-dialog
@@ -506,24 +221,6 @@
         </div>
       </el-dialog>
     </div>
-    <div
-      style="
-        width: 30%;
-        height: 500px;
-        margin-left: 68%;
-        background-color: white;
-        border-radius: 20px ;
-      "
-    >
-      <div style="margin-left: 4%; margin-top: 3%; border-radius: 20px ; float: left">
-        <div>
-          <p style="width: 200px; font-size: 20px;">实时热点</p>
-        </div>
-        <div v-for="(item, index) in suyang" :key="index" :style="{ color: index < 3 ? 'red' : 'black' }" style=" width: 420px;border: 0;overflow: hidden;margin-top: 10px;">
-          <div style=" width: 100%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;padding: 5px;box-sizing: border-box;"> {{index+1}}.{{ item }} </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -533,7 +230,6 @@ export default {
   name: 'MineView',
   data() {
     return {
-      suyang: ['字符串1字符串1字符串1字符串1字符串1字符串1字符串1字符串1字符串1字符串1', '字符串2字符串2字符串2字符串2字符串2', '字符串3字符串3字符串3字符串3字符串3', '字符串4', '字符串5', '字符串6', '字符串7', '字符串8', '字符串9'],
       hotspotlist: [],
       valueUrl: 'https://www.woodymidnight.cn/Summary/document/uploadFile',
       url: this.avatar, // 没有照片时候
@@ -575,10 +271,10 @@ export default {
     listlikehistory().then(res => {
       this.listlikehistory = res.data.reverse()
       console.log('所以历史记录返回', this.listlikehistory)
+      this.collects()
       this.userinfos()
       this.comments()
-      this.likes()
-      this.collects()
+      // this.likes()
       this.historyuseridlist()
       this.hotspot()
     })
@@ -666,28 +362,13 @@ export default {
       this.dialogFormVisible = false
     },
     // 查看原文的跳转
-    MyBriefingDetails() {
-      this.$router.push({ path: '/BriefingDetails', query: { historyid: this.listlikehistory[0].historyid }})
+    MyBriefingDetails(id) {
+      this.$router.push({ path: '/BriefingDetails', query: { historyid: id }})
     },
 
     // 查看6个
-    goone() {
-      this.$router.push({ path: '/BriefingDetails', query: { historyid: this.listlikehistorysy[0].historyid }})
-    },
-    gotwo() {
-      this.$router.push({ path: '/BriefingDetails', query: { historyid: this.listcollecthistory[0].historyid }})
-    },
-    gothree() {
-      this.$router.push({ path: '/BriefingDetails', query: { historyid: this.listuser[0].historyid }})
-    },
-    gofour() {
-      this.$router.push({ path: '/BriefingDetails', query: { historyid: this.listlikehistorysy[1].historyid }})
-    },
-    gofive() {
-      this.$router.push({ path: '/BriefingDetails', query: { historyid: this.listcollecthistory[1].historyid }})
-    },
-    gosix() {
-      this.$router.push({ path: '/BriefingDetails', query: { historyid: this.listuser[1].historyid }})
+    goone(id) {
+      this.$router.push({ path: '/BriefingDetails', query: { historyid: id }})
     },
     // 查看所以历史记录的跳转
     SeeMore() {
@@ -730,4 +411,6 @@ export default {
   }
 }
 </script>
-
+<style scoped>
+@import "index.css";
+</style>

@@ -1,0 +1,75 @@
+.mineView {
+    width: 100%;
+}
+.mine-head {
+    background-color: #deecfb;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+.mine-head-text {
+    font-size: 20px;
+    margin: 10px 0;
+}
+.mine-body {
+    margin: 0 20px;
+}
+.mine-care {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mine-care-body {
+    display: flex;
+    flex-wrap: wrap;
+}
+.ellipsis-line {
+    word-break: break-all;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+.mine-care-card {
+    position: relative;
+    width: 350px;
+    height: 160px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.mine-care-button {
+    position: absolute;
+    font-size: 16px;
+    bottom: -50px;
+    right: 10px;
+    color: #e67979;
+    height: 100%;
+}
+.mine-left {
+    margin-top: 20px;
+}
+.mine-my-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.mine-comment {
+    margin-top: 20px;
+    border-radius: 10px;
+    /*background-color: rgba(255, 255, 255, 0.3);*/
+    padding: 10px;
+}
+.mine-comment-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mine-comment-context {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-bottom: 1px solid #eeeeee;
+}
