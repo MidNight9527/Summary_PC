@@ -128,6 +128,7 @@
           :autosize="{ minRows: 14, maxRows: 38}"
           class="textinput"
           placeholder="请输入内容"
+          style="max-height: 150px;"
         />
         <!-- 上传文件 -->
         <el-upload
@@ -147,25 +148,6 @@
             type="primary"
           >文件上传更快捷</el-button>
         </el-upload>
-        <!-- <el-upload
-          action
-          :data="{'algorithmId': 'TextRank', 'inPercent': 0.1, 'userId': 23}"
-          style="position:absolute;width: 100%;height: 100%;z-index: 1000;"
-          :auto-upload="false"
-          @change="onselect"
-        >
-          <template #trigger><el-button
-            size="small"
-            type="primary"
-          >选择</el-button></template>
-          <el-button
-            v-if="!autoUpload"
-            style="margin-left: 1px;"
-            size="small"
-            type="success"
-            @click="onupload"
-          >上传</el-button>
-        </el-upload> -->
 
       </div>
       <!-- 步骤四 -->
@@ -216,6 +198,7 @@
         >返回</el-button>
       </div>
     </div>
+    <div style="height: 30px;"></div>
   </div>
 </template>
 
@@ -306,13 +289,13 @@ export default {
       })
     },
     xizaimoban() {
-      console.log('我进来了')
-      const iframe = document.createElement('iframe')
-      iframe.style.display = 'none'
-      iframe.style.height = 0
-      iframe.src = this.url
-      document.body.appendChild(iframe)
-      setTimeout(() => { iframe.remove() }, 5 * 60 * 1000)
+      const downloadLink = document.createElement('a')
+      downloadLink.style.display = 'none'
+      downloadLink.href = this.url
+      downloadLink.download = '简报' // 可选，设置下载的文件名
+      document.body.appendChild(downloadLink)
+      downloadLink.click()
+      downloadLink.remove()
     },
     // 文件删除后 事件
     handleRemove(file, fileList) {

@@ -25,10 +25,10 @@
               >去论坛看看</el-button>
             </div>
             <div class="mine-care-body">
-              <el-empty v-if="listcollecthistory.length == 0" description="暂无数据，快去使用吧！"></el-empty>
+              <el-empty v-if="userIndex.myCollect.length == 0" description="暂无数据，快去使用吧！"></el-empty>
               <div
                 v-else
-                v-for="(e, i) in listcollecthistory"
+                v-for="(e, i) in userIndex.myCollect"
                 :key="i"
               >
                 <el-card
@@ -36,7 +36,7 @@
                   shadow="hover"
                   class="mine-care-card"
                 >
-                  <div class="ellipsis-line">{{ e.history.originaltext }}</div>
+                  <div class="ellipsis-line">{{ e.originaltext }}</div>
                   <el-button
                     type="text"
                     class="mine-care-button"
@@ -53,14 +53,14 @@
                   @click="SeeMore"
                 >去论坛看看</el-button>
               </div>
-              <el-empty v-if="listlikehistory.length == 0" description="暂无数据，快去使用吧！"></el-empty>
+              <el-empty v-if="userIndex.latestNews.length == 0" description="暂无数据，快去使用吧！"></el-empty>
               <div
                 v-else
-                v-for="(e, i) in listlikehistory"
+                v-for="(e, i) in userIndex.latestNews"
                 :key="i"
               >
                 <div
-                  v-if="i < 5"
+                  v-if="i < 3"
                   class="mine-comment-context"
                 >
                   <el-avatar
@@ -82,14 +82,14 @@
                 <p style="font-size: 20px;">我的简报</p>
               </div>
               <div>
-                <el-empty v-if="listuserhistorywdy.length == 0" description="暂无数据，快去使用吧！"></el-empty>
+                <el-empty v-if="userIndex.myHistory.length == 0" description="暂无数据，快去使用吧！"></el-empty>
                 <div
                   v-else
-                  v-for="(e, i) in listuserhistorywdy"
+                  v-for="(e, i) in userIndex.myHistory"
                   :key="i"
                 >
                   <div
-                    v-if="i < 5"
+                    v-if="i < 3"
                     class="mine-my-summary"
                   >
                     <p
@@ -112,19 +112,19 @@
               <div>
                 <p style="font-size: 20px;">实时热点</p>
               </div>
-              <el-empty v-if="hotspotlist.length == 0" description="暂无数据，快去使用吧！"></el-empty>
+              <el-empty v-if="userIndex.hotSpot.length == 0" description="暂无数据，快去使用吧！"></el-empty>
               <div
                 v-else
-                v-for="(item, index) in hotspotlist"
+                v-for="(item, index) in userIndex.hotSpot"
                 :key="index"
               >
-                <p v-if="index < 10" class="ellipsis-line"> {{ index+1 }}.{{ item.history.originaltext }} </p>
+                <p v-if="index < 5" class="ellipsis-line"> {{ index+1 }}.{{ item.originaltext }} </p>
               </div>
             </el-card>
+            <div style="height: 30px; margin-top: 20px;"></div>
           </div>
         </el-col>
       </el-row>
-      <div style="height:20px" />
     </div>
     <div>
       <el-dialog
@@ -146,7 +146,6 @@
             <el-upload
               :action="valueUrl"
               :on-success="handleAvatarSuccess"
-              :before-upload="beforeAvatarUpload"
             >
               <img
                 v-if="formObj.updateuseravatar"
@@ -225,7 +224,7 @@
 </template>
 
 <script>
-import { userinfo, comment, like, collect, update, listlikehistory, listuserhistory, hotspotN, hotspotNN, hotspotNNN } from '../../api/mine.js'
+import { userinfo, update, userIndex } from '../../api/mine.js'
 export default {
   name: 'MineView',
   data() {
@@ -260,7 +259,8 @@ export default {
         updateusertype: ''
       },
       dialogTitle: '', // 气泡框标题
-      dialogFormVisible: false // 气泡框显示状态
+      dialogFormVisible: false, // 气泡框显示状态
+      userIndex: []
     }
   },
   mounted() {
@@ -268,38 +268,17 @@ export default {
 
   created() {
     this.userid = this.$store.getters.userInfo.userid
-    listlikehistory().then(res => {
-      this.listlikehistory = res.data.reverse()
-      console.log('所以历史记录返回', this.listlikehistory)
-      this.collects()
-      this.userinfos()
-      this.comments()
-      // this.likes()
-      this.historyuseridlist()
-      this.hotspot()
-    })
+    this.userinfos()
+    this.userIndexs(this.$store.getters.userInfo.userid)
   },
 
   methods: {
-    hotspot() {
-      hotspotN().then((res) => {
-        this.hotspotlist = res.data
-      })
-      this.hotspottwo()
-    },
-    hotspottwo() {
-      hotspotNN().then((res) => {
-        for (var i = 0; i < res.data.length; i++) {
-          this.hotspotlist.push(res.data[i])
-        }
-      })
-      this.hotspotthree()
-    },
-    hotspotthree() {
-      hotspotNNN().then((res) => {
-        for (var i = 0; i < res.data.length; i++) {
-          this.hotspotlist.push(res.data[i])
-        }
+
+    userIndexs(userid) {
+      userIndex(userid).then((res) => {
+        console.log('res.data', res.data)
+        console.log('length ', res.data.hotSpot.length)
+        this.userIndex = res.data
       })
     },
 
@@ -314,36 +293,6 @@ export default {
         this.username = res.data.username
         this.password = res.data.password
         // console.log('列表用户信息返回', this.userlist)
-      })
-    },
-    // 评论
-    comments() {
-      comment(this.userid).then((res) => {
-        // console.log('评论返回', res)
-        this.listuser = res.data.reverse()
-        console.log('列表评论返回', this.listuser)
-      })
-    },
-    // 点赞
-    likes() {
-      like(this.userid).then((res) => {
-        // console.log('点赞id返回', res)
-        this.listlikehistorysy = res.data.reverse()
-        console.log('列表点赞id返回', this.listlikehistorysy)
-      })
-    },
-    collects() {
-      collect(this.userid).then((res) => {
-        // console.log('收藏id返回', res)
-        this.listcollecthistory = res.data.reverse()
-        console.log('列表收藏id返回', this.listcollecthistory)
-      })
-    },
-    // 看个人的
-    historyuseridlist() {
-      listuserhistory(this.userid).then(res => {
-        this.listuserhistorywdy = res.data.reverse()
-        console.log('个人的历史记录', this.listuserhistorywdy)
       })
     },
     updateData() {

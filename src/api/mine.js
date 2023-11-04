@@ -102,6 +102,18 @@ export function hotspotNNN() {
   })
 }
 
+// 收藏前n
+export function userIndex(userid) {
+  console.log('踩踩我是谁', userid)
+  return request({
+    url: '/user/userIndex',
+    method: 'post',
+    params: {
+      userId: userid
+    }
+  })
+}
+
 export function update(updatepassword, updateuseravatar, updateuserid, updateusername, updateusersign, updateuserphone, updateusertype) {
   return request({
     url: '/user/update',
