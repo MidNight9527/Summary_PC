@@ -181,7 +181,6 @@ export default {
       this.historyselects()
       this.likes()
       this.collects()
-      this.userhistorys()
     })
   },
 
